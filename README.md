@@ -1,63 +1,55 @@
-# NeonAV Secure PRO ULTRA 🛡️
+# 🛡️ NeonAV Secure PRO ULTRA 2.0
 
-O **NeonAV Secure PRO ULTRA** é um scanner heurístico de arquivos **100% Client-Side** (roda inteiramente no navegador), desenvolvido para análise estática rápida, detecção de indicadores de comprometimento (IOCs), cálculo de entropia de bytes e hash criptográfico de arquivos suspeitos, sem enviar dados para servidores externos.
+Aplicação web em **HTML5, CSS3 e JavaScript (ES6+)** voltada para análise estática local de arquivos, inspeção lexical de URLs, simulação educativa de perímetro WAF/IPS e execução de **11 testes automatizados** diretamente no navegador, sem dependências externas.
 
----
-
-## 🚀 Principais Funcionalidades
-
-* **Análise Heurística Avançada:** Varre o conteúdo do arquivo em busca de padrões associados a *Keyloggers*, *Info Stealers*, códigos ofuscados, comandos de terminal suspeitos (`powershell`, `cmd`, `/bin/bash`), persistência e credenciais expostas.
-* **Cálculo de Entropia de Bytes:** Mede a densidade de informação dos arquivos para identificar possíveis conteúdos compactados, empacotados ou criptografados.
-* **Geração de Hash SHA-512:** Utiliza a API nativa do navegador (`crypto.subtle`) para calcular assinaturas criptográficas robustas de forma otimizada.
-* **Detecção Automática de IOCs:** Extrai e categoriza URLs, endereços IPv4, domínios e e-mails presentes nos arquivos analisados.
-* **Laboratório de Testes Integrado:** Inclui um painel simulado com arquivos de teste (limpo, JavaScript suspeito, Stealer, PowerShell e crítico) para validar o comportamento das regras heurísticas em tempo real.
-* **Armazenamento Local:** Salva o histórico de análises no `localStorage` do navegador para consulta posterior.
-* **Exportação de Relatórios:** Permite exportar os resultados e históricos completos nos formatos **JSON**, **CSV** e **HTML**.
+Desenvolvido por **Teobaldo Machado Batista Ribeiro** (`teobaldotech`) como projeto de portfólio em desenvolvimento web front-end e segurança defensiva.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## ✨ Principais Funcionalidades
 
-* **HTML5 / CSS3:** Interface responsiva com design moderno em modo escuro (*Dark Mode*) e animações suaves.
-* **JavaScript (ES6+ puro):** Sem dependências externas ou frameworks pesados, garantindo máxima performance e privacidade.
-* **Web APIs:** `Crypto API` (SHA-512), `File API`, `Blob API` e `Clipboard API`.
+### 1. Scanner Estático Local (`Análise Real`)
+* **Hash Criptográfico SHA-512:** Calcula o digest completo via Web Crypto API (`crypto.subtle.digest("SHA-512", ...)`).
+* **Entropia de Shannon:** Mede a distribuição de bytes (`0` a `8` bits/byte) para sinalizar conteúdos potencialmente compactados, cifrados ou ofuscados.
+* **Assinatura Binária & Extensões:** Identifica cabeçalhos conhecidos (`MZ/PE`, `ELF`, `ZIP/APK/JAR`, `PDF`), extensões executáveis/de script e indícios de dupla extensão.
+* **Heurísticas & Extração de IOCs:** Avalia padrões textuais suspeitos (captura de senha, ação externa em formulário, `keydown`, `document.cookie`, `sendBeacon`, `eval`/`atob`, PowerShell, comandos de shell e persistência) e extrai URLs e endereços IPv4 embutidos.
+* **Análise Estrutural de URL:** Valida sintaxe e protocolo (`http:` / `https:`) sem emitir requisições remotas, pontuando sinais como uso de IP direto no host, `xn--` (Punycode), `@`, TLDs frequentes em campanhas descartáveis, excesso de subdomínios e termos sensíveis.
+* **Exportação de Laudos:** Gera relatórios em **JSON**, **CSV** (com escape adequado de aspas e delimitadores) e **HTML**.
 
----
+### 2. Firewall / IPS (`Simulação Educativa`)
+* Simula o comportamento de regras de mitigação para **DDoS**, **XSS**, **SQL Injection** e **Brute Force**, utilizando endereços da faixa reservada **RFC 5737 (`203.0.113.0/24`)**.
+* Separa visualmente os eventos simulados da análise estática real, deixando explícito que um navegador em sandbox não intercepta tráfego de rede do sistema operacional.
 
-## 📦 Como Usar
-
-1. **Baixe ou salve** o código em um arquivo local (por exemplo, `index.html`).
-2. **Abra o arquivo** diretamente em qualquer navegador web moderno (Google Chrome, Mozilla Firefox, Microsoft Edge, etc.).
-3. Na tela de boas-vindas (*Capa*):
-* Clique em **🚀 Acessar Sistema** para ir direto à área de análise.
-* Ou clique em **🧪 Abrir Laboratório de Testes** para gerar arquivos simulados e testar as detecções imediatamente.
-
-
-4. **Para analisar seus próprios arquivos:**
-* Arraste e solte os arquivos na **Área de Análise** ou clique em **Selecionar arquivos**.
-* Clique no botão **🛡️ Iniciar análise**.
-
-
-5. Utilize os filtros de busca e risco na seção de resultados para gerenciar os arquivos processados, ou utilize os botões de exportação para gerar relatórios detalhados.
-
----
-
-## ⚙️ Configurações Disponíveis
-
-No painel lateral de configurações, você pode habilitar ou desabilitar opcionalmente:
-
-* **Detecção de URLs** e links suspeitos.
-* **Análise de Entropia** de bytes.
-* **Detecção de extensões perigosas/executáveis** (`.exe`, `.bat`, `.ps1`, `.scr`, etc.).
-* **Detecção de IOCs**.
-* **Limite de tamanho por arquivo** (opções de 5 MB, 10 MB, 25 MB ou 50 MB).
+### 3. Suíte de Testes Automatizados (`11 Testes QA`)
+Executa asserções reais na interface sem necessidade de runner externo, cobrindo:
+1. Sanitização XSS com `escapeHTML`.
+2. Validação de entrada de URL (bloqueio de esquemas inválidos como `javascript:` e aceite de URLs `https:`).
+3. Validação de tamanho máximo de arquivo.
+4. Cálculo de entropia de Shannon em distribuição uniforme.
+5. Geração de hash SHA-512 (128 caracteres hexadecimais).
+6. Pontuação heurística em amostra sintética suspeita.
+7. Classificação de risco baixo em amostra limpa.
+8. Faixas e limites de `classifyRisk` (`0–24`, `25–49`, `50–74`, `75–100`).
+9. Ordenação decrescente por `score` e `size` em `sortReports`.
+10. Filtros por nível de risco, hash e IOC em `filterReports`.
+11. Serialização e escape de aspas em `buildJSONExport` e `buildCSVExport`.
 
 ---
 
-## 🔒 Privacidade e Segurança
+## 🧱 Estrutura e Organização
 
-Como toda a execução ocorre localmente no navegador do usuário, **nenhum arquivo enviado para o NeonAV é transmitido para servidores remotos**, garantindo total privacidade e confidencialidade dos dados analisados.
+O projeto é entregue como aplicação single-file (`index.html`) com tema escuro, capa inicial com ações diretas, suporte responsivo para desktop e dispositivos móveis (como Android/Chrome) e persistência local via `localStorage` com validação na leitura.
+
+* **Camada de UI & Navegação:** Capa inicial (`#coverScreen`), abas (`Scanner Estático`, `Firewall / IPS`, `Testes Automatizados`), filtros, barras de progresso e modal de amostras sintéticas (`[AMOSTRA SINTÉTICA]`).
+* **Camada de Validação & Domínio:** `validateURLInput`, `validateFileInput`, `analyzeFileBuffer`, `analyzeURLStatic`, `classifyRisk`, `filterReports`, `sortReports`, `buildJSONExport` e `buildCSVExport`.
+* **Camada de QA:** `runAutomatedTestSuite` com contagem de aprovados/falhas e tempo de execução em milissegundos.
 
 ---
 
-*Desenvolvido para fins educacionais, de auditoria defensiva e análise preliminar.*
+## 🚀 Como Executar
+
+1. Baixe ou clone o repositório de `teobaldotech`.
+2. Abra o arquivo `index.html` diretamente em um navegador moderno (Chrome, Edge, Firefox ou Android Chrome) ou sirva via servidor local estático.
+3. Na capa inicial, clique em **🚀 Acessar Painel 2.0**, **🧪 Abrir Amostras Sintéticas** ou **⚙️ Executar 11 Testes Automatizados**.
+
+---
