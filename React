@@ -35,6 +35,7 @@ body{
         var(--bg);
     color:var(--text);
     min-height:100vh;
+    padding-bottom:76px;
 }
 
 button,input,select{ font:inherit; }
@@ -465,6 +466,104 @@ input:focus,select:focus{ border-color:var(--green); box-shadow:0 0 10px rgba(0,
 }
 .toggle input{ width:auto; accent-color:var(--green); }
 
+/* Monetização (Web + Ponte Android AdMob) */
+.monetization-panel{
+    border-color:rgba(67,181,255,.38);
+}
+.ad-slot-card{
+    background:#05110b;
+    border:1px dashed #195b3b;
+    border-radius:12px;
+    padding:12px;
+    margin-top:10px;
+}
+.ad-slot-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:8px;
+}
+.ad-pill{
+    padding:2px 7px;
+    border-radius:5px;
+    font-size:10px;
+    font-weight:bold;
+    background:rgba(67,181,255,.16);
+    color:var(--blue);
+    border:1px solid rgba(67,181,255,.4);
+}
+.ad-pill.ready{
+    background:rgba(0,255,136,.16);
+    color:var(--green);
+    border-color:rgba(0,255,136,.45);
+}
+.ad-preview-box{
+    min-height:56px;
+    border-radius:9px;
+    background:linear-gradient(135deg,#071810,#0c2217);
+    border:1px solid #123b27;
+    padding:10px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    font-size:12px;
+}
+.ad-grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:10px;
+}
+.ad-input-group{
+    margin-top:10px;
+}
+.ad-input-group label{
+    display:block;
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:4px;
+}
+.ad-status-bar{
+    margin-top:10px;
+    padding:8px 10px;
+    border-radius:8px;
+    font-size:11px;
+    background:#04100a;
+    border:1px solid var(--border);
+    color:var(--muted);
+}
+
+/* Banner Rodapé Fixo Não Intrusivo */
+.sticky-banner-bar{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:40;
+    background:rgba(4,13,9,.96);
+    border-top:1px solid var(--border);
+    padding:8px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    backdrop-filter:blur(6px);
+}
+.sticky-banner-bar.hidden{ display:none; }
+.sticky-ad-badge{
+    font-size:10px;
+    font-weight:bold;
+    padding:2px 6px;
+    border-radius:4px;
+    background:rgba(255,230,109,.15);
+    color:var(--yellow);
+    border:1px solid rgba(255,230,109,.4);
+}
+
 /* Firewall / IPS Simulado */
 .firewall-grid{
     display:grid;
@@ -621,7 +720,7 @@ input:focus,select:focus{ border-color:var(--green); box-shadow:0 0 10px rgba(0,
 @media(max-width:700px){
     .app{ padding:10px; }
     header{ flex-direction:column; align-items:flex-start; }
-    .dashboard,.firewall-grid,.test-summary{ grid-template-columns:1fr; }
+    .dashboard,.firewall-grid,.test-summary,.ad-grid-2{ grid-template-columns:1fr; }
     .filters{ grid-template-columns:1fr; }
     .result-grid{ grid-template-columns:repeat(2,1fr); }
     .result-head{ flex-direction:column; }
@@ -637,20 +736,21 @@ input:focus,select:focus{ border-color:var(--green); box-shadow:0 0 10px rgba(0,
     <div class="cover-content">
         <div class="cover-logo">🛡️</div>
         <h2 class="cover-title">NeonAV Secure PRO ULTRA 2.0</h2>
-        <div class="cover-subtitle">Análise Estática Local Real • Simulador IPS Educativo • 11 Testes Automatizados</div>
+        <div class="cover-subtitle">Análise Estática Local Real • Simulador IPS Educativo • 12 Testes Automatizados</div>
         
         <div class="cover-features">
             <span class="cover-feature">SHA-512 WebCrypto</span>
             <span class="cover-feature">Entropia de Shannon</span>
             <span class="cover-feature">Validação Estrita de Entradas</span>
             <span class="cover-feature">Separação Real vs. Simulação</span>
-            <span class="cover-feature">Suíte QA (11 Testes)</span>
+            <span class="cover-feature">Suíte QA (12 Testes)</span>
+            <span class="cover-feature">AdMob Ready + WebView Bridge</span>
         </div>
 
         <div class="cover-actions">
             <button class="cover-btn primary" id="coverStartBtn">🚀 Acessar Painel 2.0</button>
             <button class="cover-btn secondary" id="coverTestBtn">🧪 Abrir Amostras Sintéticas</button>
-            <button class="cover-btn secondary" id="coverQaBtn">⚙️ Executar 11 Testes Automatizados</button>
+            <button class="cover-btn secondary" id="coverQaBtn">⚙️ Executar 12 Testes Automatizados</button>
         </div>
     </div>
 </div>
@@ -677,7 +777,7 @@ input:focus,select:focus{ border-color:var(--green); box-shadow:0 0 10px rgba(0,
         🛡️ Firewall / IPS <span class="mode-pill mode-sim">Simulação</span>
     </button>
     <button class="tab-btn" data-tab="qaTab">
-        🧪 Testes Automatizados <span class="mode-pill mode-qa">11 Testes</span>
+        🧪 Testes Automatizados <span class="mode-pill mode-qa">12 Testes</span>
     </button>
 </nav>
 
@@ -833,6 +933,73 @@ input:focus,select:focus{ border-color:var(--green); box-shadow:0 0 10px rgba(0,
                 </div>
             </section>
 
+            <section class="panel monetization-panel" id="monetizationPanel">
+                <h2>💰 Monetização & AdMob Ready</h2>
+                <div class="meta" id="monetizationModeLabel">
+                    Ambiente: Navegador Web (Simulação Segura de Slots)
+                </div>
+
+                <!-- Slot Native Advanced / Patrocínio -->
+                <div class="ad-slot-card">
+                    <div class="ad-slot-head">
+                        <span>NATIVE / BANNER SLOT • PUBLICIDADE</span>
+                        <span class="ad-pill" id="adRuntimeBadge">WEB FALLBACK</span>
+                    </div>
+                    <div class="ad-preview-box" id="bannerAdSlot">
+                        <div>
+                            <strong style="color:var(--green);">NeonAV Pro • Espaço Patrocinado</strong>
+                            <div class="meta" style="margin-top:2px;" id="bannerAdUnitText">Configure seus IDs AdMob abaixo</div>
+                        </div>
+                        <button class="btn" id="refreshBannerBtn" style="padding:6px 10px;font-size:11px;">Atualizar</button>
+                    </div>
+                </div>
+
+                <div class="ad-grid-2">
+                    <button class="btn blue" id="triggerInterstitialBtn">📺 Testar Interstitial</button>
+                    <button class="btn primary" id="triggerRewardedBtn">🎁 Testar Rewarded</button>
+                </div>
+
+                <div class="toggle" style="margin-top:10px;">
+                    <span>Banner Rodapé Fixo</span>
+                    <input type="checkbox" id="cfgStickyBanner" checked>
+                </div>
+
+                <div class="toggle">
+                    <span>Interstitial após Fila (Cooldown 90s)</span>
+                    <input type="checkbox" id="cfgPostScanAd">
+                </div>
+
+                <div class="ad-input-group">
+                    <label for="admobAppIdInput">AdMob App ID (ca-app-pub-XXXX~YYYY)</label>
+                    <input type="text" id="admobAppIdInput" placeholder="ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY" autocomplete="off">
+                </div>
+                <div class="ad-input-group">
+                    <label for="admobBannerIdInput">AdMob Banner Unit ID (ca-app-pub-XXXX/ZZZZ)</label>
+                    <input type="text" id="admobBannerIdInput" placeholder="ca-app-pub-XXXXXXXXXXXXXXXX/ZZZZZZZZZZ" autocomplete="off">
+                </div>
+                <div class="ad-input-group">
+                    <label for="admobInterstitialIdInput">AdMob Interstitial Unit ID</label>
+                    <input type="text" id="admobInterstitialIdInput" placeholder="ca-app-pub-XXXXXXXXXXXXXXXX/ZZZZZZZZZZ" autocomplete="off">
+                </div>
+                <div class="ad-input-group">
+                    <label for="admobRewardedIdInput">AdMob Rewarded Unit ID</label>
+                    <input type="text" id="admobRewardedIdInput" placeholder="ca-app-pub-XXXXXXXXXXXXXXXX/ZZZZZZZZZZ" autocomplete="off">
+                </div>
+                <div class="ad-input-group">
+                    <label for="admobNativeIdInput">AdMob Native Advanced Unit ID</label>
+                    <input type="text" id="admobNativeIdInput" placeholder="ca-app-pub-XXXXXXXXXXXXXXXX/ZZZZZZZZZZ" autocomplete="off">
+                </div>
+
+                <div class="ad-status-bar" id="adValidationStatus">
+                    Status de Prontidão: Aguardando validação de IDs.
+                </div>
+
+                <div class="actions" style="margin-top:10px;">
+                    <button class="btn primary" id="saveMonetizationBtn">Validar & Salvar IDs</button>
+                    <button class="btn danger" id="resetMonetizationBtn" style="padding:8px 12px;">Limpar</button>
+                </div>
+            </section>
+
             <section class="panel">
                 <h2>📝 Auditoria do Sistema</h2>
                 <div class="log" id="log"></div>
@@ -898,15 +1065,15 @@ input:focus,select:focus{ border-color:var(--green); box-shadow:0 0 10px rgba(0,
 <div id="qaTab" class="tab-content">
 
     <div class="context-banner qa">
-        <span><strong>Suíte de Verificação Automatizada (11 Testes):</strong> Valida sanitização XSS, validação de URL/arquivo, entropia de Shannon, SHA-512, heurística, classificação de risco, ordenação, filtros e exportação JSON/CSV.</span>
+        <span><strong>Suíte de Verificação Automatizada (12 Testes):</strong> Valida sanitização XSS, validação de URL/arquivo, entropia de Shannon, SHA-512, heurística, classificação de risco, ordenação, filtros, exportação JSON/CSV e regras de monetização AdMob/Cooldown.</span>
     </div>
 
     <section class="panel" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
         <div>
-            <h2 style="margin-bottom:5px;">🧪 Diagnóstico & Testes Unitários (11 Asserções)</h2>
+            <h2 style="margin-bottom:5px;">🧪 Diagnóstico & Testes Unitários (12 Asserções)</h2>
             <div style="color:var(--muted); font-size:13px;">Executa asserções reais contra as funções internas do NeonAV 2.0.</div>
         </div>
-        <button class="btn purple" id="runTestsBtn">▶ Executar 11 Testes</button>
+        <button class="btn purple" id="runTestsBtn">▶ Executar 12 Testes</button>
     </section>
 
     <div class="test-summary">
@@ -931,7 +1098,7 @@ input:focus,select:focus{ border-color:var(--green); box-shadow:0 0 10px rgba(0,
     <section class="panel">
         <h2>📋 Resultados das Asserções</h2>
         <div id="qaResults">
-            <div class="empty">Clique em "Executar 11 Testes" para iniciar a validação.</div>
+            <div class="empty">Clique em "Executar 12 Testes" para iniciar a validação.</div>
         </div>
     </section>
 </div>
@@ -941,6 +1108,15 @@ input:focus,select:focus{ border-color:var(--green); box-shadow:0 0 10px rgba(0,
 </div>
 
 </div>
+
+<!-- Banner Rodapé Fixo (Não intrusivo) -->
+<aside class="sticky-banner-bar" id="stickyBannerBar" aria-label="Espaço Publicitário">
+    <span class="sticky-ad-badge">ANÚNCIO</span>
+    <span style="font-size:12px;color:var(--text);" id="stickyBannerText">
+        NeonAV Secure PRO ULTRA 2.0 • Slot Banner Pronto (320x50 / Adaptativo)
+    </span>
+    <button class="btn" id="closeStickyBannerBtn" style="padding:4px 9px;font-size:11px;" aria-label="Ocultar Banner">Ocultar</button>
+</aside>
 
 <!-- Modal de Amostras Sintéticas -->
 <div class="modal" id="testModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -1549,6 +1725,10 @@ async function processQueue() {
     $("status").textContent = "● SISTEMA PRONTO";
     $("scanBtn").disabled = false;
     isScanning = false;
+
+    if (monetizationConfig.postScanInterstitial && total > 0) {
+        requestInterstitialAd("conclusao_da_fila", false);
+    }
 }
 
 /* =========================================================
@@ -1628,7 +1808,257 @@ document.querySelectorAll("[data-test]").forEach(btn => {
 });
 
 /* =========================================================
-   7. SIMULADOR DE FIREWALL / IPS (SEPARADO DO SCANNER REAL)
+   7. MONETIZAÇÃO (ADMOB VALIDATOR, COOLDOWN & ANDROID BRIDGE)
+========================================================= */
+const MONETIZATION_STORAGE_KEY = "neonav-pro-ultra-v2-monetization";
+const INTERSTITIAL_COOLDOWN_MS = 90 * 1000;
+
+let monetizationConfig = {
+    appId: "",
+    bannerUnitId: "",
+    interstitialUnitId: "",
+    rewardedUnitId: "",
+    nativeUnitId: "",
+    stickyBannerEnabled: true,
+    postScanInterstitial: false,
+    lastInterstitialAt: 0,
+    impressions: 0,
+    rewardsEarned: 0
+};
+
+function validateAdMobIds({ appId = "", bannerUnitId = "", interstitialUnitId = "", rewardedUnitId = "", nativeUnitId = "" } = {}) {
+    const appRegex = /^ca-app-pub-\d{16}~\d{10}$/;
+    const unitRegex = /^ca-app-pub-\d{16}\/\d{10}$/;
+
+    const cleanApp = String(appId).trim();
+    const units = [
+        { label: "Banner", value: String(bannerUnitId).trim() },
+        { label: "Interstitial", value: String(interstitialUnitId).trim() },
+        { label: "Rewarded", value: String(rewardedUnitId).trim() },
+        { label: "Native Advanced", value: String(nativeUnitId).trim() }
+    ];
+
+    if (cleanApp && !appRegex.test(cleanApp)) {
+        return { valid: false, error: "App ID inválido. Formato esperado: ca-app-pub-16dígitos~10dígitos." };
+    }
+
+    for (const u of units) {
+        if (u.value && !unitRegex.test(u.value)) {
+            return { valid: false, error: `${u.label} Unit ID inválido. Formato esperado: ca-app-pub-16dígitos/10dígitos.` };
+        }
+    }
+
+    const configuredCount = units.filter(u => u.value.length > 0).length;
+    return {
+        valid: true,
+        productionReady: Boolean(cleanApp) && configuredCount > 0,
+        configuredCount
+    };
+}
+
+function canTriggerInterstitial(nowMs = Date.now(), lastAtMs = monetizationConfig.lastInterstitialAt, forceManual = false) {
+    if (forceManual) return true;
+    return (nowMs - Number(lastAtMs || 0)) >= INTERSTITIAL_COOLDOWN_MS;
+}
+
+function hasAndroidAdBridge() {
+    return Boolean(
+        window.NeonAVBridge &&
+        typeof window.NeonAVBridge.showInterstitial === "function" &&
+        typeof window.NeonAVBridge.showRewarded === "function"
+    );
+}
+
+function loadMonetizationConfig() {
+    try {
+        const raw = localStorage.getItem(MONETIZATION_STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === "object") {
+            monetizationConfig = {
+                appId: String(parsed.appId || "").slice(0, 64),
+                bannerUnitId: String(parsed.bannerUnitId || "").slice(0, 64),
+                interstitialUnitId: String(parsed.interstitialUnitId || "").slice(0, 64),
+                rewardedUnitId: String(parsed.rewardedUnitId || "").slice(0, 64),
+                nativeUnitId: String(parsed.nativeUnitId || "").slice(0, 64),
+                stickyBannerEnabled: parsed.stickyBannerEnabled !== false,
+                postScanInterstitial: Boolean(parsed.postScanInterstitial),
+                lastInterstitialAt: Number(parsed.lastInterstitialAt) || 0,
+                impressions: Number(parsed.impressions) || 0,
+                rewardsEarned: Number(parsed.rewardsEarned) || 0
+            };
+        }
+    } catch {
+        localStorage.removeItem(MONETIZATION_STORAGE_KEY);
+    }
+}
+
+function saveMonetizationConfig() {
+    try {
+        localStorage.setItem(MONETIZATION_STORAGE_KEY, JSON.stringify(monetizationConfig));
+    } catch {
+        addLog("Aviso: não foi possível salvar configuração de monetização.", "warn");
+    }
+}
+
+function renderMonetizationUI() {
+    const isNative = hasAndroidAdBridge();
+    const validation = validateAdMobIds(monetizationConfig);
+
+    $("monetizationModeLabel").textContent = isNative
+        ? "Ambiente: Android WebView Nativo (NeonAVBridge conectado)"
+        : "Ambiente: Navegador Web (Simulação Segura de Slots)";
+
+    const badge = $("adRuntimeBadge");
+    badge.textContent = isNative ? "ANDROID ADMOB" : validation.productionReady ? "IDs CONFIGURADOS" : "WEB FALLBACK";
+    badge.classList.toggle("ready", isNative || validation.productionReady);
+
+    $("cfgStickyBanner").checked = monetizationConfig.stickyBannerEnabled;
+    $("cfgPostScanAd").checked = monetizationConfig.postScanInterstitial;
+    $("admobAppIdInput").value = monetizationConfig.appId;
+    $("admobBannerIdInput").value = monetizationConfig.bannerUnitId;
+    $("admobInterstitialIdInput").value = monetizationConfig.interstitialUnitId;
+    $("admobRewardedIdInput").value = monetizationConfig.rewardedUnitId;
+    $("admobNativeIdInput").value = monetizationConfig.nativeUnitId;
+
+    const unitLabel = monetizationConfig.nativeUnitId || monetizationConfig.bannerUnitId
+        ? `Unit Ativa: ${monetizationConfig.nativeUnitId || monetizationConfig.bannerUnitId} • Impressões: ${monetizationConfig.impressions}`
+        : `Modo demonstração local • Impressões: ${monetizationConfig.impressions} • Recompensas: ${monetizationConfig.rewardsEarned}`;
+    $("bannerAdUnitText").textContent = unitLabel;
+
+    $("adValidationStatus").textContent = validation.productionReady
+        ? `Status: Pronto para ponte AdMob (${validation.configuredCount} unidade(s) validada(s)).`
+        : "Status: Modo Demo Local (preencha App ID + Unit IDs para produção).";
+
+    const stickyBar = $("stickyBannerBar");
+    stickyBar.classList.toggle("hidden", !monetizationConfig.stickyBannerEnabled);
+    document.body.style.paddingBottom = monetizationConfig.stickyBannerEnabled ? "76px" : "20px";
+    $("stickyBannerText").textContent = monetizationConfig.bannerUnitId
+        ? `NeonAV Pro • Banner AdMob (${monetizationConfig.bannerUnitId})`
+        : "NeonAV Secure PRO ULTRA 2.0 • Slot Banner Adaptativo (320x50)";
+}
+
+function refreshBannerSlot() {
+    monetizationConfig.impressions++;
+    if (hasAndroidAdBridge()) {
+        if (typeof window.NeonAVBridge.refreshBanner === "function") {
+            window.NeonAVBridge.refreshBanner(monetizationConfig.bannerUnitId);
+        }
+        if (typeof window.NeonAVBridge.renderNativeAd === "function" && monetizationConfig.nativeUnitId) {
+            window.NeonAVBridge.renderNativeAd(monetizationConfig.nativeUnitId);
+        }
+    }
+    saveMonetizationConfig();
+    renderMonetizationUI();
+    addLog(`Slots Banner/Native atualizados (${monetizationConfig.impressions} impressões).`);
+}
+
+function requestInterstitialAd(reason = "manual", forceManual = true) {
+    const now = Date.now();
+    if (!canTriggerInterstitial(now, monetizationConfig.lastInterstitialAt, forceManual)) {
+        addLog(`Interstitial ignorado pelo cooldown de 90s (${reason}).`);
+        return false;
+    }
+
+    monetizationConfig.lastInterstitialAt = now;
+    monetizationConfig.impressions++;
+    saveMonetizationConfig();
+    renderMonetizationUI();
+
+    if (hasAndroidAdBridge()) {
+        window.NeonAVBridge.showInterstitial(monetizationConfig.interstitialUnitId, reason);
+        addLog(`Interstitial nativo solicitado (${reason}).`);
+        return true;
+    }
+
+    addLog(`[DEMO WEB] Interstitial exibido (${reason}).`);
+    return true;
+}
+
+function requestRewardedAd(onRewardGranted) {
+    if (hasAndroidAdBridge()) {
+        window.NeonAVBridge.showRewarded(monetizationConfig.rewardedUnitId, "export_bonus");
+        addLog("Rewarded nativo solicitado ao Android WebView.");
+        return;
+    }
+    monetizationConfig.rewardsEarned++;
+    saveMonetizationConfig();
+    renderMonetizationUI();
+    addLog("[DEMO WEB] Recompensa concedida: exportação prioritária habilitada.");
+    if (typeof onRewardGranted === "function") onRewardGranted();
+}
+
+window.onNativeRewardEarned = function (rewardType = "bonus") {
+    monetizationConfig.rewardsEarned++;
+    saveMonetizationConfig();
+    renderMonetizationUI();
+    addLog(`Recompensa nativa confirmada (${rewardType}). Total: ${monetizationConfig.rewardsEarned}.`);
+};
+
+$("refreshBannerBtn").addEventListener("click", refreshBannerSlot);
+$("triggerInterstitialBtn").addEventListener("click", () => requestInterstitialAd("teste_manual", true));
+$("triggerRewardedBtn").addEventListener("click", () => requestRewardedAd());
+
+$("cfgStickyBanner").addEventListener("change", e => {
+    monetizationConfig.stickyBannerEnabled = Boolean(e.target.checked);
+    saveMonetizationConfig();
+    renderMonetizationUI();
+});
+
+$("closeStickyBannerBtn").addEventListener("click", () => {
+    monetizationConfig.stickyBannerEnabled = false;
+    saveMonetizationConfig();
+    renderMonetizationUI();
+});
+
+$("cfgPostScanAd").addEventListener("change", e => {
+    monetizationConfig.postScanInterstitial = Boolean(e.target.checked);
+    saveMonetizationConfig();
+    addLog(`Interstitial automático após fila ${monetizationConfig.postScanInterstitial ? "ativado" : "desativado"}.`);
+});
+
+$("saveMonetizationBtn").addEventListener("click", () => {
+    const candidate = {
+        appId: $("admobAppIdInput").value.trim(),
+        bannerUnitId: $("admobBannerIdInput").value.trim(),
+        interstitialUnitId: $("admobInterstitialIdInput").value.trim(),
+        rewardedUnitId: $("admobRewardedIdInput").value.trim(),
+        nativeUnitId: $("admobNativeIdInput").value.trim()
+    };
+
+    const check = validateAdMobIds(candidate);
+    if (!check.valid) {
+        $("adValidationStatus").textContent = `Erro: ${check.error}`;
+        addLog(`Falha ao salvar AdMob IDs: ${check.error}`, "err");
+        return;
+    }
+
+    Object.assign(monetizationConfig, candidate);
+    saveMonetizationConfig();
+    renderMonetizationUI();
+    addLog(`Configurações AdMob validadas e salvas (${check.configuredCount} unidade(s)).`);
+});
+
+$("resetMonetizationBtn").addEventListener("click", () => {
+    monetizationConfig = {
+        appId: "",
+        bannerUnitId: "",
+        interstitialUnitId: "",
+        rewardedUnitId: "",
+        nativeUnitId: "",
+        stickyBannerEnabled: true,
+        postScanInterstitial: false,
+        lastInterstitialAt: 0,
+        impressions: 0,
+        rewardsEarned: 0
+    };
+    localStorage.removeItem(MONETIZATION_STORAGE_KEY);
+    renderMonetizationUI();
+    addLog("Dados e IDs de monetização resetados.");
+});
+
+/* =========================================================
+   8. SIMULADOR DE FIREWALL / IPS (SEPARADO DO SCANNER REAL)
 ========================================================= */
 const SIM_ATTACK_TEMPLATES = {
     ddos: { label: "DDoS SYN/HTTP Flood", details: "Rajada sintética de 38.000 req/s na porta 443" },
@@ -1696,7 +2126,7 @@ function renderFirewallSim() {
 }
 
 /* =========================================================
-   8. SUÍTE DE TESTES AUTOMATIZADOS (11 ASSERÇÕES)
+   9. SUÍTE DE TESTES AUTOMATIZADOS (12 ASSERÇÕES)
 ========================================================= */
 async function runAutomatedTestSuite() {
     const t0 = performance.now();
@@ -1711,7 +2141,6 @@ async function runAutomatedTestSuite() {
         }
     }
 
-    // 1. Sanitização XSS
     await assertCase("1. Sanitização XSS (escapeHTML)", () => {
         const out = escapeHTML(`<img src=x onerror="alert('xss')">`);
         if (out.includes("<") || out.includes(">") || out.includes('"')) {
@@ -1719,7 +2148,6 @@ async function runAutomatedTestSuite() {
         }
     });
 
-    // 2. Validação de URL
     await assertCase("2. Validação de Entrada de URL (Bloqueio de Esquema Inválido)", () => {
         const bad = validateURLInput("javascript:alert(1)");
         if (bad.valid) throw new Error("Esquema javascript: deveria ser bloqueado.");
@@ -1727,13 +2155,11 @@ async function runAutomatedTestSuite() {
         if (!good.valid) throw new Error("URL HTTPS válida foi rejeitada.");
     });
 
-    // 3. Limite de Arquivo
     await assertCase("3. Validação de Limite de Arquivo", () => {
         const oversized = validateFileInput({ name: "grande.bin", size: 20 * 1024 * 1024 }, 10);
         if (oversized.valid) throw new Error("Arquivo acima do limite deveria falhar.");
     });
 
-    // 4. Entropia de Shannon
     await assertCase("4. Cálculo Real de Entropia de Shannon", () => {
         const uniform = new Uint8Array(256);
         for (let i = 0; i < 256; i++) uniform[i] = i;
@@ -1741,14 +2167,12 @@ async function runAutomatedTestSuite() {
         if (Math.abs(h - 8.0) > 0.01) throw new Error(`Esperado ~8.0, obtido ${h}`);
     });
 
-    // 5. SHA-512
     await assertCase("5. Integridade Criptográfica SHA-512 (WebCrypto)", async () => {
         const buf = new TextEncoder().encode("NeonAV").buffer;
         const digest = await computeSHA512(buf);
         if (digest.length !== 128) throw new Error(`Tamanho de SHA-512 inválido: ${digest.length}`);
     });
 
-    // 6. Detecção Heurística em Amostra Suspeita
     await assertCase("6. Detecção Heurística em Amostra Sintética Suspeita", async () => {
         const buf = new TextEncoder().encode("powershell.exe -EncodedCommand AAA; eval(atob('x'))").buffer;
         const res = await analyzeFileBuffer({ name: "teste.ps1", size: buf.byteLength, buffer: buf, isSynthetic: true }, {
@@ -1757,7 +2181,6 @@ async function runAutomatedTestSuite() {
         if (res.score < 50) throw new Error(`Score esperado >= 50, obtido ${res.score}`);
     });
 
-    // 7. Classificação em Arquivo Limpo
     await assertCase("7. Classificação Limpa em Arquivo Inofensivo", async () => {
         const buf = new TextEncoder().encode("Apenas texto simples de documentação.").buffer;
         const res = await analyzeFileBuffer({ name: "notas.txt", size: buf.byteLength, buffer: buf, isSynthetic: true }, {
@@ -1766,7 +2189,6 @@ async function runAutomatedTestSuite() {
         if (res.riskLevel !== "low") throw new Error(`Esperado risco 'low', obtido '${res.riskLevel}'`);
     });
 
-    // 8. Classificação de Risco (classifyRisk)
     await assertCase("8. Classificação de Risco (classifyRisk - Faixas e Limites)", () => {
         if (classifyRisk(0).level !== "low" || classifyRisk(24).level !== "low") {
             throw new Error("Faixa baixa (0-24) falhou.");
@@ -1782,7 +2204,6 @@ async function runAutomatedTestSuite() {
         }
     });
 
-    // 9. Ordenação por Score e Tamanho
     await assertCase("9. Ordenação por Score e Tamanho (sortReports)", () => {
         const sample = [
             { name: "a.txt", score: 15, size: 5000, timestamp: 1 },
@@ -1799,7 +2220,6 @@ async function runAutomatedTestSuite() {
         }
     });
 
-    // 10. Filtros por Risco e Busca por IOC/Hash
     await assertCase("10. Filtros de Risco e Busca por IOC/Hash (filterReports)", () => {
         const sample = [
             { name: "dropper.ps1", hash: "abc123", riskLevel: "critical", iocs: ["203.0.113.10"] },
@@ -1815,7 +2235,6 @@ async function runAutomatedTestSuite() {
         }
     });
 
-    // 11. Exportação JSON e CSV
     await assertCase("11. Geração e Integridade de Exportação JSON e CSV", () => {
         const sample = [{
             name: 'payload,"especial".js',
@@ -1839,6 +2258,27 @@ async function runAutomatedTestSuite() {
         }
     });
 
+    await assertCase("12. Validação AdMob IDs & Cooldown de Interstitial", () => {
+        const invalid = validateAdMobIds({ appId: "id-invalido" });
+        if (invalid.valid) throw new Error("App ID malformado deveria ser rejeitado.");
+
+        const valid = validateAdMobIds({
+            appId: "ca-app-pub-3940256099942544~3347511713",
+            bannerUnitId: "ca-app-pub-3940256099942544/6300978111"
+        });
+        if (!valid.valid || !valid.productionReady) {
+            throw new Error("IDs AdMob válidos deveriam ser aceitos.");
+        }
+
+        const now = 1_000_000;
+        if (canTriggerInterstitial(now, now - 10_000, false)) {
+            throw new Error("Cooldown de 90s deveria bloquear disparo automático recente.");
+        }
+        if (!canTriggerInterstitial(now, now - 95_000, false)) {
+            throw new Error("Interstitial deveria ser liberado após 90s.");
+        }
+    });
+
     const elapsed = (performance.now() - t0).toFixed(1);
     const passed = cases.filter(c => c.passed).length;
     const failed = cases.length - passed;
@@ -1858,11 +2298,11 @@ async function runAutomatedTestSuite() {
         </div>
     `).join("");
 
-    addLog(`Suíte QA (11 testes) executada: ${passed}/${cases.length} aprovados em ${elapsed} ms.`);
+    addLog(`Suíte QA (12 testes) executada: ${passed}/${cases.length} aprovados em ${elapsed} ms.`);
 }
 
 /* =========================================================
-   9. EVENT LISTENERS & INICIALIZAÇÃO
+   10. EVENT LISTENERS & INICIALIZAÇÃO
 ========================================================= */
 function switchTab(tabId) {
     document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tabId));
@@ -1965,11 +2405,13 @@ $("runTestsBtn").addEventListener("click", runAutomatedTestSuite);
 
 // Boot
 loadState();
+loadMonetizationConfig();
 updateQueueUI();
 updateMetricsUI();
 renderResults();
 renderFirewallSim();
-addLog("NeonAV Secure PRO ULTRA 2.0 inicializado com 11 testes QA integrados.");
+renderMonetizationUI();
+addLog("NeonAV Secure PRO ULTRA 2.0 inicializado com 12 testes QA e AdMob Ready.");
 </script>
 </body>
 </html>
